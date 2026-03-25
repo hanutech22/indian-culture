@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emotional Development 💖 | Sanskriti Setu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .ed-section { background:white; border-radius:20px; padding:2rem; margin-bottom:1.5rem; box-shadow:var(--shadow-soft); }
+    .ed-title { font-size:1.1rem; font-weight:800; color:var(--text-dark); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+    .emotion-card { border-radius:16px; padding:1.2rem; margin:0.75rem 0; transition:var(--transition); }
+    .emotion-card:hover { transform:translateY(-3px); }
+    .lesson-block { border-left:4px solid var(--saffron); background:rgba(255,107,53,0.04); border-radius:0 14px 14px 0; padding:1.2rem; margin:1rem 0; }
+    .lesson-block.teal { border-left-color:var(--teal); background:rgba(13,148,136,0.04); }
+    .lesson-block.gold { border-left-color:var(--gold); background:rgba(245,158,11,0.04); }
+    .lesson-block.pink { border-left-color:var(--pink); background:rgba(236,72,153,0.04); }
+    .lesson-block.purple { border-left-color:#8B5CF6; background:rgba(139,92,246,0.04); }
+    .lesson-block h4 { font-weight:800; font-size:0.92rem; margin-bottom:0.6rem; }
+    .lesson-block p, .lesson-block ul { font-size:0.88rem; color:var(--text-mid); line-height:1.75; }
+    .lesson-block ul { padding-left:1.2rem; }
+    .emotion-wheel { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:1.5rem 0; }
+    .ew-item { border-radius:14px; padding:1rem; text-align:center; cursor:pointer; transition:var(--transition); }
+    .ew-item:hover { transform:scale(1.05); }
+    .ew-item .emo { font-size:2.2rem; display:block; margin-bottom:0.4rem; }
+    .ew-item h4 { font-weight:800; font-size:0.8rem; margin-bottom:0.2rem; }
+    .ew-item p { font-size:0.72rem; color:var(--text-mid); line-height:1.5; display:none; }
+    .ew-item.open p { display:block; }
+    .breath-guide { background:linear-gradient(135deg,rgba(13,148,136,0.08),rgba(59,130,246,0.08)); border:2px solid rgba(13,148,136,0.15); border-radius:16px; padding:1.5rem; margin:1rem 0; }
+    .breath-guide h4 { font-weight:800; font-size:0.95rem; margin-bottom:0.75rem; color:var(--teal); }
+    .stages-list { list-style:none; padding:0; counter-reset:stage; }
+    .stages-list li { counter-increment:stage; padding:0.6rem 0.6rem 0.6rem 2.5rem; position:relative; font-size:0.88rem; color:var(--text-mid); line-height:1.7; border-bottom:1px dashed #E5E7EB; }
+    .stages-list li::before { content:counter(stage); position:absolute; left:0; top:50%; transform:translateY(-50%); width:26px; height:26px; background:linear-gradient(135deg,var(--saffron),var(--gold)); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.78rem; }
+    .strategy-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin:1rem 0; }
+    .strategy-card { border-radius:14px; padding:1.2rem; border:2px solid #E5E7EB; transition:var(--transition); }
+    .strategy-card:hover { border-color:var(--saffron); box-shadow:var(--shadow-soft); }
+    .strategy-card .ico { font-size:2rem; margin-bottom:0.5rem; display:block; }
+    .strategy-card h4 { font-weight:800; font-size:0.88rem; margin-bottom:0.4rem; }
+    .strategy-card p { font-size:0.8rem; color:var(--text-mid); line-height:1.6; }
+    .indian-connection { background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(245,158,11,0.06)); border:2px solid rgba(255,107,53,0.15); border-radius:14px; padding:1.2rem; margin:0.75rem 0; }
+    .indian-connection h4 { font-weight:800; font-size:0.9rem; color:var(--saffron-dark); margin-bottom:0.5rem; }
+    .indian-connection p { font-size:0.87rem; color:var(--text-mid); line-height:1.75; }
+    .case-study { background:#F0FDF4; border:2px solid #A7F3D0; border-radius:14px; padding:1.2rem; margin:0.75rem 0; }
+    .case-study h4 { font-weight:800; font-size:0.88rem; color:#065F46; margin-bottom:0.5rem; }
+    .case-study p { font-size:0.87rem; color:#374151; line-height:1.7; }
+    @media(max-width:640px){ .emotion-wheel{grid-template-columns:repeat(2,1fr);} .strategy-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner">
+  <a href="../index.html" class="navbar-logo"><span class="logo-icon">🪔</span><span>Sanskriti Setu</span></a>
+  <div class="navbar-actions">
+    <a href="../teacher.html" class="btn btn-outline btn-sm">← Teacher Portal</a>
+    <button onclick="downloadPDF('emotional-development')" class="btn btn-primary btn-sm">⬇ Download PDF</button>
+  </div>
+</div></nav>
+
+<header class="module-hero" style="background:linear-gradient(135deg,#EC4899,#8B5CF6,#3B82F6);padding:3rem 0 6rem;">
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <div style="font-size:5rem;margin-bottom:0.75rem;" class="animate-bounce">💖</div>
+    <h1>Emotional Development</h1>
+    <p>A deep, practical guide for teachers — understanding children's emotions, building resilience, and weaving Indian cultural wisdom into emotional learning.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container" style="max-width:900px;">
+
+    <!-- WHY EMOTIONAL DEVELOPMENT -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🧠 Why Emotional Development Is the Foundation of All Learning</div>
+      <p style="color:var(--text-mid);font-size:0.95rem;line-height:1.9;margin-bottom:1rem;">
+        Neuroscience has proven what Indian wisdom knew for thousands of years: <strong>children cannot learn effectively when they are emotionally dysregulated.</strong> A child who is anxious, angry, or feeling unsafe cannot absorb information — their brain's threat response (amygdala) literally blocks cognitive function.
+      </p>
+      <p style="color:var(--text-mid);font-size:0.95rem;line-height:1.9;margin-bottom:1rem;">
+        Indian culture offers extraordinary tools for emotional regulation — yoga, music, nature connection, storytelling, and community rituals. These are not just traditions; they are <strong>evidence-based psychological tools</strong> that build what modern psychology calls "emotional intelligence" (EQ).
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem;">
+        <div style="flex:1;min-width:180px;text-align:center;padding:1rem;background:rgba(236,72,153,0.06);border-radius:14px;border:1.5px solid rgba(236,72,153,0.15);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🧠</div>
+          <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.3rem;">Brain Science</h4>
+          <p style="font-size:0.8rem;color:var(--text-mid);">Emotions processed first before thoughts. Safety = learning readiness.</p>
+        </div>
+        <div style="flex:1;min-width:180px;text-align:center;padding:1rem;background:rgba(139,92,246,0.06);border-radius:14px;border:1.5px solid rgba(139,92,246,0.15);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🪔</div>
+          <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.3rem;">Indian Wisdom</h4>
+          <p style="font-size:0.8rem;color:var(--text-mid);">5000 years of emotional wisdom: yoga, Ayurveda, stories, music, community.</p>
+        </div>
+        <div style="flex:1;min-width:180px;text-align:center;padding:1rem;background:rgba(59,130,246,0.06);border-radius:14px;border:1.5px solid rgba(59,130,246,0.15);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🌱</div>
+          <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.3rem;">Early Years Critical</h4>
+          <p style="font-size:0.8rem;color:var(--text-mid);">Ages 3–8 are the peak window for emotional habit formation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE 5 DOMAINS -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🌟 The 5 Domains of Emotional Development</div>
+      <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:1.5rem;">Each domain is equally important. And each one has a direct connection to Indian cultural practices — this is why using Sanskriti Setu as an EQ tool is so powerful.</p>
+
+      <div class="lesson-block">
+        <h4>1. 🪞 Self-Awareness — "I know what I feel"</h4>
+        <p><strong>What it means:</strong> The ability to notice and name one's own emotions as they happen. "I am feeling nervous right now." "My tummy feels tight when I'm scared."</p>
+        <p style="margin-top:0.7rem;"><strong>Indian Cultural Link:</strong> The practice of <em>Swadhyaya</em> (self-study) in yoga philosophy teaches exactly this. Daily journaling, reflection, and meditation are all forms of self-awareness practice that come from Indian tradition.</p>
+        <p style="margin-top:0.7rem;"><strong>Classroom practice:</strong> Create an "Emotion Check-In" ritual every morning. Children show their emotion on fingers (1-5 scale) or point to an emoji chart. Make this a safe, non-judged routine.</p>
+      </div>
+
+      <div class="lesson-block teal">
+        <h4>2. 🤝 Self-Regulation — "I can calm myself"</h4>
+        <p><strong>What it means:</strong> The ability to manage overwhelming emotions without hurting self or others. This is NOT suppression — it is healthy management.</p>
+        <p style="margin-top:0.7rem;"><strong>Indian Cultural Link:</strong> <em>Pranayama</em> (breathing exercises) in Yoga is the world's oldest self-regulation technology. The simple 4-4-4 breath (inhale 4, hold 4, exhale 4) activates the parasympathetic nervous system — calming the body's stress response within 60 seconds.</p>
+        <p style="margin-top:0.7rem;"><strong>Classroom practice:</strong> Teach "Bhramari breath" (bee humming) for anger/frustration. Teach "Balloon belly breathing" for anxiety. Practice these BEFORE children need them — in calm times.</p>
+      </div>
+
+      <div class="lesson-block gold">
+        <h4>3. 💪 Resilience — "I can get back up"</h4>
+        <p><strong>What it means:</strong> The ability to bounce back from setbacks, failures, and difficulties. Resilience is NOT toughness — it is the ability to feel the pain and still keep going.</p>
+        <p style="margin-top:0.7rem;"><strong>Indian Cultural Link:</strong> <em>Panchatantra</em> stories are masterclasses in resilience. Animals face impossible odds, make mistakes, face consequences — and find a way forward. The crow who drops pebbles into a pot (not giving up) teaches more about resilience than any lecture.</p>
+        <p style="margin-top:0.7rem;"><strong>Classroom practice:</strong> When a child fails or is upset, use the Panchatantra frame: "Remember how the crow kept trying? What is your pebble today?" This creates a shared cultural language for resilience.</p>
+      </div>
+
+      <div class="lesson-block pink">
+        <h4>4. 💞 Empathy — "I understand how you feel"</h4>
+        <p><strong>What it means:</strong> The ability to understand and feel what another person is experiencing. This is the root of kindness, friendship, and social harmony.</p>
+        <p style="margin-top:0.7rem;"><strong>Indian Cultural Link:</strong> The concept of <em>Karuna</em> (compassion) is central to both Hindu and Buddhist philosophy. <em>Vasudhaiva Kutumbakam</em> ("the world is one family") is a 3000-year-old Sanskrit maxim that teaches universal empathy. India's festivals are inherently empathy-building — sharing sweets, welcoming strangers, feeding the poor.</p>
+        <p style="margin-top:0.7rem;"><strong>Classroom practice:</strong> "Feelings Chair" — one child sits in the "feelings chair" and shares a challenge. The class responds with: "I heard that you felt _____. I felt similar when _____." Teach Namaste: "I bow to the divine in you" — this is empathy in action.</p>
+      </div>
+
+      <div class="lesson-block purple">
+        <h4>5. 🌐 Social Skills — "I connect well with others"</h4>
+        <p><strong>What it means:</strong> The ability to communicate, cooperate, resolve conflicts, and form healthy relationships. Social skills are learned — not innate.</p>
+        <p style="margin-top:0.7rem;"><strong>Indian Cultural Link:</strong> India's culture of <em>Seva</em> (selfless service), <em>Sahyog</em> (cooperation), and community festivals are social skill training grounds. Group activities like folk dances (Garba, Bhangra) teach coordination, listening, turn-taking, and celebrating together — all core social skills.</p>
+        <p style="margin-top:0.7rem;"><strong>Classroom practice:</strong> "Village project" — class is divided into "villages." Each village must cooperate to complete a cultural project. Teach conflict resolution using: "I feel _____ when _____. I need _____." (Non-violent communication framework).</p>
+      </div>
+    </div>
+
+    <!-- EMOTION WHEEL -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🎨 The Indian Emotion Wheel — Navarasas</div>
+      <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:0.5rem;">Ancient Indian classical arts (Bharatanatyam, Kathak) identified 9 primary emotions (<em>Navarasas</em>) — a system that predates modern emotion science by 2000+ years! Tap each emotion to learn about it:</p>
+      <div class="emotion-wheel">
+        <div class="ew-item" style="background:rgba(255,107,53,0.08);border:2px solid rgba(255,107,53,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😍</span><h4>Sringara</h4><p>Love, beauty, attraction — the most powerful Rasa. Love for family, nature, God.</p>
+        </div>
+        <div class="ew-item" style="background:rgba(245,158,11,0.08);border:2px solid rgba(245,158,11,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😄</span><h4>Hasya</h4><p>Joy, laughter, humor. Playfulness is sacred in Indian culture — Krishna's childhood is full of it!</p>
+        </div>
+        <div class="ew-item" style="background:rgba(59,130,246,0.08);border:2px solid rgba(59,130,246,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😢</span><h4>Karuna</h4><p>Compassion, sorrow, grief. Feeling pain deeply builds empathy and kindness for all beings.</p>
+        </div>
+        <div class="ew-item" style="background:rgba(239,68,68,0.08);border:2px solid rgba(239,68,68,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😡</span><h4>Raudra</h4><p>Righteous anger, fury. The anger of Durga fighting evil — anger can be a force for justice!</p>
+        </div>
+        <div class="ew-item" style="background:rgba(16,185,129,0.08);border:2px solid rgba(16,185,129,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">🦁</span><h4>Vira</h4><p>Courage, heroism, valor. The bravery of Shivaji, Lakshmibai, Bhagat Singh — courage lives in all of us.</p>
+        </div>
+        <div class="ew-item" style="background:rgba(139,92,246,0.08);border:2px solid rgba(139,92,246,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😱</span><h4>Bhayanaka</h4><p>Fear, anxiety. Even the great Arjuna felt fear before battle. Fear is human — and can be faced!</p>
+        </div>
+        <div class="ew-item" style="background:rgba(168,85,247,0.08);border:2px solid rgba(168,85,247,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">🤢</span><h4>Bibhatsa</h4><p>Disgust, aversion. Teaches discernment — what is harmful vs. helpful. A protective emotion.</p>
+        </div>
+        <div class="ew-item" style="background:rgba(6,182,212,0.08);border:2px solid rgba(6,182,212,0.2);" onclick="toggleEmo(this)">
+          <span class="emo">😲</span><h4>Adbhuta</h4><p>Wonder, amazement. The sense of wonder before the universe is the root of science AND spirituality!</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:0.5rem;"><span class="badge badge-teal">+ Shanta (Peace) — the 9th Rasa, added later — the state of complete calm</span></div>
+    </div>
+
+    <!-- PRACTICAL STRATEGIES -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🛠️ Practical Daily Emotional Regulation Strategies</div>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <span class="ico">🌬️</span>
+          <h4>Pranayama Breathing</h4>
+          <p>Box breathing (4-4-4-4) or Bhramari humming. Use at transitions, after conflicts, before tests. Teach the physiology simply: "Slow breath tells the heart: I am safe."</p>
+        </div>
+        <div class="strategy-card">
+          <span class="ico">🌿</span>
+          <h4>Nature Grounding</h4>
+          <p>5-4-3-2-1 technique with nature focus: 5 things I see (clouds, trees, birds), 4 I touch (grass, bark), 3 I hear, 2 I smell, 1 I taste. Immediate anxiety relief.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="ico">📖</span>
+          <h4>Story as Mirror</h4>
+          <p>"This character feels just like you feel right now. What did they do? What else could they do?" Stories bypass defensiveness — children see solutions for themselves.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="ico">🎵</span>
+          <h4>Music Regulation</h4>
+          <p>Morning raga (Bhupali) for focus. Bhramari humming for calm. Vigorous folk music for energy release. Indian classical music is scientifically proven to reduce cortisol.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="ico">🧘</span>
+          <h4>Body Scan (Yogic)</h4>
+          <p>"Close your eyes. Feel your feet on the floor. Feel your hands in your lap. Take 3 breaths." This 60-second practice anchors scattered attention. Comes from Yoga Nidra tradition.</p>
+        </div>
+        <div class="strategy-card">
+          <span class="ico">🎨</span>
+          <h4>Art Expression</h4>
+          <p>When words fail, art speaks. "Draw how you feel right now — any colors, any shapes." Indian Rangoli, Mehendi, and Kolam are all meditative art forms originally designed for emotional balance.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEACHER'S OWN EMOTIONAL HEALTH -->
+    <div class="ed-section animate-fadeInUp" style="border:2px solid rgba(236,72,153,0.2);background:rgba(236,72,153,0.02);">
+      <div class="ed-title">💖 Your Emotional Health Matters First — The Teacher's Practice</div>
+      <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.85;margin-bottom:1.2rem;">
+        <strong>Children co-regulate with adults.</strong> This means your emotional state is literally contagious — for better or worse. A teacher who is chronically stressed, overwhelmed, or emotionally unavailable cannot help children develop emotionally, no matter how good the curriculum.
+      </p>
+      <div class="breath-guide">
+        <h4>🌬️ Your Daily 5-Minute Regulation Practice (Before Class)</h4>
+        <ul class="stages-list">
+          <li><strong>Arrive 5 minutes early.</strong> Sit quietly. No phone. Feel your feet on the floor.</li>
+          <li><strong>3 rounds of Box Breathing</strong> (4 counts in → 4 hold → 4 out → 4 hold). This activates parasympathetic system.</li>
+          <li><strong>Set an intention</strong> — one word: "patience," "curiosity," "joy." Let this word guide your class.</li>
+          <li><strong>Body scan</strong> — notice any tension (shoulders, jaw). Consciously release it. You cannot give what you don't have.</li>
+          <li><strong>Brief visualization</strong> — see each child as inherently whole and capable. This changes how you respond to challenging behaviors.</li>
+        </ul>
+      </div>
+      <div class="indian-connection">
+        <h4>🪔 Ancient Indian Concept: "Guru is the lamp who lights other lamps"</h4>
+        <p>The Sanskrit word <em>Guru</em> means "remover of darkness." But a lamp must first be lit itself. Your personal practice — yoga, reflection, nature time, relationship — is not self-indulgence. It is professionalism. A depleted teacher cannot ignite curiosity in children.</p>
+      </div>
+    </div>
+
+    <!-- HANDLING DIFFICULT EMOTIONS IN CLASSROOM -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🔥 Handling Difficult Emotions in the Classroom</div>
+      <div class="case-study">
+        <h4>📋 Case Study 1: The Angry Child (Raudra Rasa)</h4>
+        <p><strong>Scenario:</strong> Aarav (6 years) throws his crayon and shouts "I hate this!" during the drawing activity.<br><br>
+        <strong>Traditional response (avoid):</strong> "Stop it! Sit down! You're being naughty!"<br><br>
+        <strong>Emotion-informed response:</strong><br>
+        1. Calmly move near Aarav (not confronting — beside him). Lower your voice, not raise it.<br>
+        2. "I can see you're really frustrated right now. That's okay. Anger is one of the Navarasas — the brave feeling."<br>
+        3. "Take 3 big Bhramari breaths with me?" (Bee humming — you do it first)<br>
+        4. After 2 minutes: "What happened? What made it feel hard?" Listen fully first.<br>
+        5. "When you're ready, I'd love to see what you were trying to draw. I bet it was something cool."<br><br>
+        <strong>What this teaches:</strong> Emotions are valid → I can calm myself → the adult is safe → I can try again.</p>
+      </div>
+      <div class="case-study">
+        <h4>📋 Case Study 2: The Anxious Child (Bhayanaka Rasa)</h4>
+        <p><strong>Scenario:</strong> Priya (5 years) refuses to participate in the Bhangra activity, clinging to her bag and crying softly.<br><br>
+        <strong>Emotion-informed response:</strong><br>
+        1. Sit beside Priya at her level. No pressure, no audience. "It's okay to just watch today."<br>
+        2. Normalize: "You know, even dancers feel nervous sometimes before they go on stage!"<br>
+        3. Invite partial participation: "Maybe you can clap the rhythm while others dance?"<br>
+        4. Celebrate small steps: "I saw you clapping! That IS part of Bhangra!"<br>
+        5. Keep a brief note to share with parents: "Priya seems to need extra warm-up time for group activities."<br><br>
+        <strong>Indian wisdom link:</strong> The concept of <em>Abhayam</em> (fearlessness) in the Gita is not the absence of fear — it is acting despite fear. Help Priya build her Abhayam one small step at a time.</p>
+      </div>
+      <div class="case-study">
+        <h4>📋 Case Study 3: The Grieving Child (Karuna Rasa)</h4>
+        <p><strong>Scenario:</strong> Class 2 student Rohan's grandmother passed away. He is quiet, unfocused, and tearful.<br><br>
+        <strong>Emotion-informed response:</strong><br>
+        1. Private check-in: "I know this is a very hard time. Would you like to sit quietly today? Or would you like to join the class? Both are okay."<br>
+        2. Use Indian cultural context: "In our culture, we say the soul is like a flame — it doesn't end, just moves to a new place."<br>
+        3. Offer a writing/drawing activity: "Would you like to draw something that reminds you of your grandmother?"<br>
+        4. Keep academic pressure zero. Connection is the lesson right now.<br>
+        5. Alert parents: "We are giving Rohan space and support."<br><br>
+        <strong>What NOT to do:</strong> "Cheer up!" "At least she lived a long life." "Focus on your work." These invalidate his experience and teach children to suppress grief.</p>
+      </div>
+    </div>
+
+    <!-- EMOTIONAL ACTIVITIES FOR TEACHERS -->
+    <div class="ed-section animate-fadeInUp">
+      <div class="ed-title">🎭 5 Deep Emotional Development Activities for the Classroom</div>
+
+      <div class="lesson-block">
+        <h4>Activity 1: "Rasayana Bowl" — The Emotion Sharing Circle (Weekly, 15 min)</h4>
+        <ul>
+          <li>Children sit in a circle. In the center: a decorative bowl (represent the 9 Rasas).</li>
+          <li>Each child draws an emotion card (happy, sad, scared, excited, angry, calm, proud, lonely, grateful)</li>
+          <li>They share: "I felt [emotion] this week when [situation]. I handled it by ___."</li>
+          <li>Class responds with non-judgmental acknowledgment: "Thank you for sharing. I hear you."</li>
+          <li><strong>Deep purpose:</strong> Builds emotional vocabulary, reduces shame around big feelings, creates community.</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block teal">
+        <h4>Activity 2: "Shanta — The Peace Corner" (Daily resource, ongoing)</h4>
+        <ul>
+          <li>Create a cozy corner in the classroom: cushion, small plant, soft fabric, a few calming objects</li>
+          <li>Label it "Shanti Corner" (Shanti = Peace). Any child can go here when they feel overwhelmed</li>
+          <li>Include: breathing prompt cards, emotion cards, simple sensory items (sand, soft ball)</li>
+          <li>Never use as punishment. This is a self-regulation tool, not a consequence</li>
+          <li><strong>Cultural link:</strong> Every Indian home has a prayer/meditation corner. This is its classroom equivalent</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block gold">
+        <h4>Activity 3: "Sringara Letters" — Gratitude Practice (Monthly)</h4>
+        <ul>
+          <li>Children write/dictate a letter of appreciation to someone in their life (parent, sibling, friend)</li>
+          <li>Explore: "What do you love about them? How do they make you feel? How do you want them to feel?"</li>
+          <li>Savor: children hand-deliver or read aloud their letters. Family members are invited to receive</li>
+          <li><strong>Science link:</strong> Gratitude practice measurably increases happiness hormones (serotonin, oxytocin)</li>
+          <li><strong>Indian link:</strong> <em>Kritagyata</em> (gratitude) is a core value. "Matru Devo Bhava" — Mother is God. Loving relationships are sacred</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block pink">
+        <h4>Activity 4: "Vira Theatre" — Courage Stories from Indian History</h4>
+        <ul>
+          <li>Each week: one story of a brave Indian (Rani Lakshmibai, Shivaji, Bhagat Singh, Gargi, Mirabai)</li>
+          <li>Focus: what fear did they face? How did they feel? What gave them courage?</li>
+          <li>Children role-play the moment of courage: "What would YOU do if you were there?"</li>
+          <li>Create a "Wall of Courage" — children add their own acts of bravery (speaking up, trying something new)</li>
+          <li><strong>Critical discussion:</strong> "Is courage always about fighting? What about the courage to be kind when others aren't?"</li>
+        </ul>
+      </div>
+
+      <div class="lesson-block purple">
+        <h4>Activity 5: "Yoga Nidra for Children" — Deep Rest and Emotional Integration (Weekly, 10 min)</h4>
+        <ul>
+          <li>Children lie down comfortably (mats, carpet). Play soft instrumental music (Bhupali raga)</li>
+          <li>Guide with a slow, gentle script: body parts relaxed one by one, safe visualization</li>
+          <li>After: quiet journaling or drawing — "What did I see? What did I feel?"</li>
+          <li>This practice processes the week's emotional experiences at a deep level</li>
+          <li><strong>Neuroscience:</strong> The hypnagogic state during Yoga Nidra consolidates emotional memories — similar to deep sleep. Children who do this weekly show measurably lower anxiety levels</li>
+          <li><strong>Script sample:</strong> "You are lying under a beautiful Banyan tree in India. The leaves are making a soft sound... Feel the warm earth beneath you... You are completely safe... Everything is peaceful..."</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RED FLAGS -->
+    <div class="ed-section animate-fadeInUp" style="border:2px solid rgba(239,68,68,0.2);background:rgba(239,68,68,0.02);">
+      <div class="ed-title" style="color:#b91c1c;">🚨 Red Flags — When to Involve Additional Support</div>
+      <p style="color:var(--text-mid);font-size:0.88rem;line-height:1.8;margin-bottom:1rem;">Teachers are not therapists, and no teacher should carry this responsibility alone. Know when to escalate:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="padding:1rem;background:rgba(239,68,68,0.06);border-radius:12px;border:1.5px solid rgba(239,68,68,0.2);">
+          <h4 style="font-weight:800;font-size:0.85rem;color:#b91c1c;margin-bottom:0.5rem;">🔴 Urgent Indicators</h4>
+          <ul style="font-size:0.82rem;color:#374151;padding-left:1.2rem;line-height:1.8;">
+            <li>Child mentions wanting to "not be here"</li>
+            <li>Visible marks on body / signs of physical harm</li>
+            <li>Sudden complete withdrawal or personality change</li>
+            <li>Aggressive behavior that harms self or others severely</li>
+          </ul>
+        </div>
+        <div style="padding:1rem;background:rgba(245,158,11,0.06);border-radius:12px;border:1.5px solid rgba(245,158,11,0.2);">
+          <h4 style="font-weight:800;font-size:0.85rem;color:#b45309;margin-bottom:0.5rem;">🟡 Monitor Closely</h4>
+          <ul style="font-size:0.82rem;color:#374151;padding-left:1.2rem;line-height:1.8;">
+            <li>Persistent difficulty sleeping (reported by parent)</li>
+            <li>Chronic crying without clear reason, 3+ weeks</li>
+            <li>Extreme separation anxiety beyond age norm</li>
+            <li>Regression in toilet training / speech</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:1rem;background:#F0FDF4;border-radius:12px;border:1.5px solid #A7F3D0;">
+        <p style="font-size:0.87rem;color:#065F46;font-weight:600;">✅ Always: Speak privately with parents (never shame the child or parent). Keep brief written notes/dates. Know your school's counselor/psychologist contact. Remember: Identifying a concern early IS the intervention — and it could change a child's life.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>💖 Sanskriti Setu • Emotional Development • <a href="../teacher.html" style="color:var(--saffron);">Teacher Portal</a></p></div></div></footer>
+<script src="../js/app.js"></script>
+<script src="../js/pdf-generator.js"></script>
+<script>
+function toggleEmo(el) { el.classList.toggle('open'); }
+</script>
+</body>
+</html>

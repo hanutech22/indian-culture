@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Guidelines 📋 | Sanskriti Setu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .guide-section { background:white; border-radius:20px; padding:2rem; margin-bottom:1.5rem; box-shadow:var(--shadow-soft); border-left:5px solid var(--saffron); }
+    .guide-section.teal { border-left-color:var(--teal); }
+    .guide-section.gold { border-left-color:var(--gold); }
+    .guide-section.pink { border-left-color:var(--pink); }
+    .guide-section.purple { border-left-color:#8B5CF6; }
+    .guide-section.green { border-left-color:#10B981; }
+    .guide-title { font-size:1.1rem; font-weight:800; color:var(--text-dark); margin-bottom:1rem; display:flex; align-items:center; gap:0.6rem; }
+    .guide-tip { background:rgba(13,148,136,0.06); border:1.5px solid rgba(13,148,136,0.15); border-radius:12px; padding:1rem; margin:0.75rem 0; }
+    .guide-tip strong { color:var(--teal); font-size:0.9rem; }
+    .guide-tip p { font-size:0.88rem; color:var(--text-mid); margin-top:0.3rem; line-height:1.7; }
+    .activity-box { background:linear-gradient(135deg,rgba(255,107,53,0.04),rgba(245,158,11,0.04)); border:2px solid rgba(255,107,53,0.12); border-radius:14px; padding:1.2rem; margin:0.75rem 0; }
+    .activity-box h4 { font-weight:800; font-size:0.9rem; color:var(--saffron-dark); margin-bottom:0.5rem; }
+    .activity-box ul { list-style:none; padding:0; margin:0; }
+    .activity-box ul li { font-size:0.87rem; color:var(--text-mid); padding:0.25rem 0; padding-left:1.2rem; position:relative; line-height:1.6; }
+    .activity-box ul li::before { content:'→'; position:absolute; left:0; color:var(--saffron); font-weight:700; }
+    .principles-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin:1rem 0; }
+    .principle-card { background:linear-gradient(135deg,rgba(255,107,53,0.05),rgba(245,158,11,0.05)); border:2px solid rgba(255,107,53,0.12); border-radius:16px; padding:1.2rem; text-align:center; }
+    .principle-card .ico { font-size:2rem; margin-bottom:0.5rem; display:block; }
+    .principle-card h4 { font-weight:800; font-size:0.9rem; margin-bottom:0.4rem; color:var(--text-dark); }
+    .principle-card p { font-size:0.8rem; color:var(--text-mid); line-height:1.6; }
+    .age-table { width:100%; border-collapse:collapse; margin:1rem 0; font-size:0.87rem; }
+    .age-table th { background:linear-gradient(135deg,var(--saffron),var(--gold)); color:white; padding:0.75rem; text-align:left; font-weight:700; }
+    .age-table td { padding:0.65rem 0.75rem; border-bottom:1.5px solid #F3F4F6; color:var(--text-mid); vertical-align:top; }
+    .age-table tr:nth-child(even) td { background:#FAFAFA; }
+    .warning-box { background:rgba(245,158,11,0.08); border:2px solid rgba(245,158,11,0.25); border-radius:14px; padding:1rem; margin:0.75rem 0; }
+    .warning-box h4 { font-weight:800; font-size:0.88rem; color:#b45309; margin-bottom:0.4rem; }
+    .warning-box p { font-size:0.85rem; color:var(--text-mid); line-height:1.7; }
+    .critical-box { background:rgba(239,68,68,0.06); border:2px solid rgba(239,68,68,0.2); border-radius:14px; padding:1rem; margin:0.75rem 0; }
+    .critical-box h4 { font-weight:800; font-size:0.88rem; color:#b91c1c; margin-bottom:0.4rem; }
+    .critical-box ul li { color:#374151; }
+    .nav-sidebar { position:sticky; top:80px; }
+    .toc-item { display:block; padding:0.6rem 1rem; border-radius:10px; font-size:0.85rem; font-weight:700; color:var(--text-mid); text-decoration:none; transition:var(--transition); border-left:3px solid transparent; margin-bottom:0.25rem; }
+    .toc-item:hover, .toc-item.active { background:rgba(255,107,53,0.08); color:var(--saffron); border-left-color:var(--saffron); }
+    .two-col { display:grid; grid-template-columns:240px 1fr; gap:2rem; align-items:start; }
+    @media(max-width:768px){ .two-col { grid-template-columns:1fr; } .nav-sidebar { display:none; } }
+  </style>
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner">
+  <a href="../index.html" class="navbar-logo"><span class="logo-icon">🪔</span><span>Sanskriti Setu</span></a>
+  <div class="navbar-actions">
+    <a href="../teacher.html" class="btn btn-outline btn-sm">← Teacher Portal</a>
+    <button onclick="downloadPDF('teacher-guidelines')" class="btn btn-primary btn-sm">⬇ Download PDF</button>
+  </div>
+</div></nav>
+
+<header class="module-hero" style="background:linear-gradient(135deg,#1E3A5F,#2563EB,#0D9488);padding:3rem 0 6rem;">
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <div style="font-size:5rem;margin-bottom:0.75rem;" class="animate-bounce">📋</div>
+    <h1>Teacher Guidelines</h1>
+    <p>A comprehensive guide to teaching Indian culture to children aged 3–8 years with joy, creativity, and purpose.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="two-col">
+      <!-- SIDEBAR TOC -->
+      <div class="nav-sidebar">
+        <div class="card" style="padding:1.2rem;">
+          <h4 style="font-weight:800;font-size:0.85rem;color:var(--text-dark);margin-bottom:1rem;">📋 Contents</h4>
+          <a class="toc-item" href="#principles">Core Principles</a>
+          <a class="toc-item" href="#age-guide">Age-wise Guide</a>
+          <a class="toc-item" href="#classroom">Classroom Setup</a>
+          <a class="toc-item" href="#activities">Activity Ideas</a>
+          <a class="toc-item" href="#assessment">Assessment</a>
+          <a class="toc-item" href="#critical">Critical Activities</a>
+          <a class="toc-item" href="#parent">Parent Engagement</a>
+          <a class="toc-item" href="#calendar">Cultural Calendar</a>
+          <a class="toc-item" href="#resources">Resources</a>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div>
+
+        <!-- INTRO -->
+        <div class="guide-section" id="top" style="border-left-color:#2563EB;">
+          <div class="guide-title">🌟 Welcome, Educator!</div>
+          <p style="color:var(--text-mid);font-size:0.95rem;line-height:1.85;margin-bottom:1rem;">You are not just a teacher — you are a <strong>cultural bridge</strong>. Every story, song, or festival you share plants a seed of identity, pride, and empathy in young hearts. This guide will help you make Indian culture come <em>alive</em> in your classroom through play, movement, art, and gentle inquiry.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <span class="badge badge-teal">Ages 3–8</span>
+            <span class="badge badge-saffron">8 Cultural Modules</span>
+            <span class="badge badge-gold">15 Critical Activities</span>
+            <span class="badge badge-pink">Parent-inclusive</span>
+          </div>
+        </div>
+
+        <!-- CORE PRINCIPLES -->
+        <div class="guide-section" id="principles">
+          <div class="guide-title">🔑 Core Principles of Teaching Indian Culture</div>
+          <div class="principles-grid">
+            <div class="principle-card">
+              <span class="ico">🎭</span>
+              <h4>Experience Before Explanation</h4>
+              <p>Let children <em>do</em> before they understand. Dance before explaining classical forms. Taste food before studying nutrition.</p>
+            </div>
+            <div class="principle-card" style="border-color:rgba(13,148,136,0.12);background:rgba(13,148,136,0.04);">
+              <span class="ico">🌈</span>
+              <h4>Celebrate Diversity Equally</h4>
+              <p>Every state, religion, and language is equally celebrated. Avoid hierarchies of culture. Maharashtra is as beautiful as Manipur.</p>
+            </div>
+            <div class="principle-card" style="border-color:rgba(236,72,153,0.12);background:rgba(236,72,153,0.04);">
+              <span class="ico">💖</span>
+              <h4>Emotional Safety First</h4>
+              <p>Never force participation. Some children may feel shy about singing or dancing. Always offer alternative ways to engage.</p>
+            </div>
+            <div class="principle-card" style="border-color:rgba(139,92,246,0.12);background:rgba(139,92,246,0.04);">
+              <span class="ico">🤝</span>
+              <h4>Connect to Their Life</h4>
+              <p>Ask: "What festival does your family celebrate?" Learning is deepest when it connects to personal experience.</p>
+            </div>
+            <div class="principle-card" style="border-color:rgba(245,158,11,0.12);background:rgba(245,158,11,0.04);">
+              <span class="ico">🌱</span>
+              <h4>Repetition with Variety</h4>
+              <p>Young children learn through repetition. Revisit the same concept through different modalities — art, song, story, movement.</p>
+            </div>
+            <div class="principle-card" style="border-color:rgba(16,185,129,0.12);background:rgba(16,185,129,0.04);">
+              <span class="ico">🔍</span>
+              <h4>Inquiry-Based Learning</h4>
+              <p>"Why do you think people celebrate Holi with colors?" Let children wonder. Curiosity is more powerful than answers.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- AGE-WISE GUIDE -->
+        <div class="guide-section teal" id="age-guide">
+          <div class="guide-title">👶 Age-wise Teaching Guide</div>
+          <table class="age-table">
+            <thead>
+              <tr><th>Age Group</th><th>Key Characteristics</th><th>Best Approaches</th><th>What to Avoid</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🌱 Nursery (3–4)</strong></td>
+                <td>Very concrete thinkers. Short attention (5–8 min). Learn through senses and play.</td>
+                <td>Songs, rhymes, touching objects (diyas, rangoli), simple stories with repetition, puppet shows.</td>
+                <td>Long explanations, abstract concepts, competition, written work.</td>
+              </tr>
+              <tr>
+                <td><strong>🌻 KG (4–5)</strong></td>
+                <td>Beginning to ask "Why?". Can follow 2–3 step instructions. Love pretend play.</td>
+                <td>Role play (be a dancer, chef), simple art projects, drawing their favorite festival, group games.</td>
+                <td>Forced memorization, grading activities, too much sitting.</td>
+              </tr>
+              <tr>
+                <td><strong>🌼 Class 1 (5–6)</strong></td>
+                <td>Can work in pairs. Beginning literacy. Loves collecting and categorizing.</td>
+                <td>Scrapbooks, word cards in Hindi + regional language, simple research ("ask grandma"), cooperative projects.</td>
+                <td>Individual silent seat work for extended periods, ranking children by cultural knowledge.</td>
+              </tr>
+              <tr>
+                <td><strong>🌺 Class 2 (6–8)</strong></td>
+                <td>Can understand cause and effect. Peer opinion matters. Can handle multi-step projects.</td>
+                <td>Mini projects (My State book), debates ("Which festival is best and why?"), teaching each other, digital activities.</td>
+                <td>Cultural stereotyping ("all Punjabis are loud"), simplistic generalizations about food/religion.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CLASSROOM SETUP -->
+        <div class="guide-section gold" id="classroom">
+          <div class="guide-title">🏫 Setting Up a Cultural Classroom</div>
+          <div class="guide-tip">
+            <strong>🗺️ India Wall Map</strong>
+            <p>Hang a large India map. Add children's names to their home states. Add emoji stickers for dances, foods, and animals of each state. Make it a living, evolving resource the children contribute to over the year.</p>
+          </div>
+          <div class="guide-tip">
+            <strong>📚 Culture Corner</strong>
+            <p>Create a dedicated "India Corner" with: traditional instruments (or pictures), fabric swatches from different states, food items like turmeric and lotus seeds to smell, storybooks in different languages, and rotating "State of the Month" displays.</p>
+          </div>
+          <div class="guide-tip">
+            <strong>🎨 Art Display Wall</strong>
+            <p>Dedicate a wall to rotating children's Indian art — Madhubani inspired drawings, Warli stick figure scenes, Rangoli designs. Label each child's work with their state, so the whole classroom feels like India!</p>
+          </div>
+          <div class="guide-tip">
+            <strong>🌿 Living Elements</strong>
+            <p>Keep a small Tulsi plant in the classroom. A small diya (LED-safe) on the teacher's desk. Seasonal flowers. These physical reminders make culture tangible and real.</p>
+          </div>
+        </div>
+
+        <!-- ACTIVITY IDEAS -->
+        <div class="guide-section pink" id="activities">
+          <div class="guide-title">🎮 Weekly Activity Framework</div>
+          <div class="activity-box">
+            <h4>📅 Monday — Story & Moral Values</h4>
+            <ul>
+              <li>Begin with a 5-minute Panchatantra or Jataka tale</li>
+              <li>Ask: "What did the animal learn?" Connect to their own experience</li>
+              <li>Have children draw a scene from the story (10 min)</li>
+              <li>Write one sentence about the moral value on their drawing</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(13,148,136,0.15);background:rgba(13,148,136,0.04);">
+            <h4>🎨 Tuesday — Art & Cultural Craft</h4>
+            <ul>
+              <li>Introduce a regional Indian art form (Madhubani, Warli, Kolam, Rangoli)</li>
+              <li>Show real examples (photographs or posters)</li>
+              <li>Children create their own version using that art style</li>
+              <li>Share and explain their work — builds speaking confidence</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(139,92,246,0.15);background:rgba(139,92,246,0.04);">
+            <h4>🎵 Wednesday — Music & Movement</h4>
+            <ul>
+              <li>Play a folk song from a different Indian state each week</li>
+              <li>Teach one simple instrument pattern (clap, pat knees = Tabla rhythm)</li>
+              <li>5-minute yoga/stretching connecting to Indian tradition</li>
+              <li>Children "conduct" — wave arms as music plays</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(245,158,11,0.15);background:rgba(245,158,11,0.04);">
+            <h4>🍛 Thursday — Food & Celebration</h4>
+            <ul>
+              <li>Discuss one regional Indian food (even just pictures if no food available)</li>
+              <li>Explore spices: smell turmeric, cardamom, cinnamon — describe!
+              <li>Plan a simple food activity: shape dough like rotis, arrange fruit patterns</li>
+              <li>Connect food to the festival or season when it's eaten</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(16,185,129,0.15);background:rgba(16,185,129,0.04);">
+            <h4>🌿 Friday — Reflection & Nature</h4>
+            <ul>
+              <li>Outdoor observation: identify a national symbol (bird/flower) in nature books</li>
+              <li>Weekly reflection circle: "What Indian thing did I learn this week?"</li>
+              <li>Children share one thing they told their family about Indian culture</li>
+              <li>Award the "Cultural Star" badge for the week</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ASSESSMENT -->
+        <div class="guide-section" id="assessment">
+          <div class="guide-title">📊 Assessment — Joyful, Not Judgmental</div>
+          <div class="warning-box">
+            <h4>⚠️ Important: Cultural learning is NOT traditional examination!</h4>
+            <p>Never test children on cultural facts in a threatening or competitive way. Assessment here means observing curiosity, engagement, creativity, and empathy — not factual recall.</p>
+          </div>
+          <div class="guide-tip" style="border-color:rgba(16,185,129,0.2);background:rgba(16,185,129,0.06);">
+            <strong>✅ Observe these indicators of cultural learning:</strong>
+            <p>• Child voluntarily mentions cultural topics in play or conversation<br>
+            • Child asks questions about their own or others' customs<br>
+            • Child demonstrates respect for different cultural practices<br>
+            • Child can retell a simple Indian folktale with details<br>
+            • Child expresses pride in their own state/language/background</p>
+          </div>
+          <div class="activity-box">
+            <h4>📖 Portfolio-Based Assessment (For Class 1 & 2)</h4>
+            <ul>
+              <li>Maintain a "My India" scrapbook — one page added per module</li>
+              <li>Include: drawings, pasted images, written/dictated reflections</li>
+              <li>End of term: child "presents" their scrapbook to the class (5 min each)</li>
+              <li>Assess: communication, cultural awareness, personal connection — never memorization</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CRITICAL ACTIVITIES FOR TEACHERS -->
+        <div class="guide-section purple" id="critical">
+          <div class="guide-title">🔬 10 Critical Deep Activities for Teachers</div>
+          <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:1.2rem;">These are advanced, high-impact activities that require preparation but create lasting cultural impact. Use 1–2 per month.</p>
+
+          <div class="activity-box">
+            <h4>1. 🗺️ "My State, My Pride" Heritage Project (3 weeks)</h4>
+            <ul>
+              <li><strong>Objective:</strong> Children research and present their home state's culture</li>
+              <li>Week 1: Interview family members ("What is special about our state?")</li>
+              <li>Week 2: Create a poster/display with drawings, labels, food images</li>
+              <li>Week 3: Present to the class — teacher facilitates Q&A session</li>
+              <li><strong>Deeper Extension:</strong> Make a "India Wall" connecting all children's states with string — showing India's unity in diversity</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(13,148,136,0.15);">
+            <h4>2. 🎭 "Festival Drama" — Full Immersive Re-enactment</h4>
+            <ul>
+              <li>Choose one major festival (e.g., Diwali, Onam, Pongal, Bihu)</li>
+              <li>Prepare the classroom as that festival environment (decorations)</li>
+              <li>Children take roles: the families, the priest, the children, the animals</li>
+              <li>Walk through the day: morning rituals, prayers, food, celebration</li>
+              <li><strong>Deeper extension:</strong> Invite parent from that state to speak for 10 minutes</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(139,92,246,0.15);">
+            <h4>3. 🎵 "Instrument Workshop" — Hands-on Sound Discovery</h4>
+            <ul>
+              <li>Bring actual or DIY instruments (table = tabla, pots = ghana)</li>
+              <li>Let children explore: what sound can I make? Is it like Tabla? Like bell?</li>
+              <li>Categorize their discovered sounds by Indian instrument families</li>
+              <li>Create a 2-minute piece of "Indian-style" music together as a class</li>
+              <li><strong>Critical thinking:</strong> "Why do you think different states developed different instruments?"</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(16,185,129,0.15);">
+            <h4>4. 🌿 "Ayurveda Kitchen Garden" — Plant Science + Culture</h4>
+            <ul>
+              <li>Plant Tulsi, mint, or coriander seeds in small pots with children</li>
+              <li>Discuss: "Why do Indian families keep Tulsi at home?"</li>
+              <li>Track growth over 4 weeks — connecting nature observation with tradition</li>
+              <li>Make simple Tulsi water to taste — sensory learning</li>
+              <li><strong>Deeper:</strong> Explore the concept of Panchabhoota (5 elements: Earth, Water, Fire, Air, Space) in simple language</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(245,158,11,0.15);">
+            <h4>5. 🤲 "Mudra Storytelling" — Body Language Art</h4>
+            <ul>
+              <li>Teach 5 simple mudras (hand gestures from classical dance)</li>
+              <li>Children use mudras to tell a simple story without words</li>
+              <li>Connect to: "How do you communicate without speaking? How do animals?"</li>
+              <li>Extension: Create a "Mudra Dictionary" class chart</li>
+              <li><strong>Critical link:</strong> Mudras are also used in yoga therapy and meditation — how is this connected?</li>
+            </ul>
+          </div>
+          <div class="activity-box">
+            <h4>6. 📚 "Write Your Own Panchatantra" — Creative Authorship</h4>
+            <ul>
+              <li>Analyze 2–3 Panchatantra stories: What is the pattern? (Animal with flaw → problem → lesson)</li>
+              <li>Children create their own animal characters and moral dilemma</li>
+              <li>Dictate (Nursery/KG) or write (Class 1–2) their original story</li>
+              <li>Illustrate and bind into a class "Panchatantra Collection" book</li>
+              <li><strong>Deeper:</strong> Discuss: "What problems do children your age have? What would the animal do?"</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(239,68,68,0.15);background:rgba(239,68,68,0.04);">
+            <h4>7. 🗣️ "Language Celebration Week" — Mother Tongue Festival</h4>
+            <ul>
+              <li>Every child teaches the class 2 words in their home language</li>
+              <li>Create a class "Word Wall" with words in all represented languages</li>
+              <li>Identify: same words across languages (Namaste variations, number words)</li>
+              <li>Discover how Sanskrit root words appear in many Indian languages</li>
+              <li><strong>Critical insight:</strong> "Why do you think India has so many languages? Is this a strength or a challenge?"</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(6,182,212,0.15);background:rgba(6,182,212,0.04);">
+            <h4>8. 🌊 "Sacred Rivers Project" — Geography + Spirituality</h4>
+            <ul>
+              <li>Trace India's major rivers on a map</li>
+              <li>Research: which civilizations/cities grew on each river?</li>
+              <li>Discuss: "Why do people in India consider rivers sacred?"</li>
+              <li>Connect to current events: river pollution and what children can do</li>
+              <li><strong>Critical extension:</strong> Compare Ganga with Nile, Amazon — what makes a river culturally important?</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(168,85,247,0.15);background:rgba(168,85,247,0.04);">
+            <h4>9. 🧘 "Yoga Integration" — Full Holistic Morning Routine</h4>
+            <ul>
+              <li>Create a 10-minute morning yoga routine for the class (3 asanas + breathing)</li>
+              <li>Let children take turns leading the class</li>
+              <li>Track: does the class feel calmer? More focused after yoga?</li>
+              <li>Research together: How long have people in India been doing yoga?</li>
+              <li><strong>Critical thinking:</strong> "Why did India's ancient scientists invent yoga? What problem were they solving?"</li>
+            </ul>
+          </div>
+          <div class="activity-box" style="border-color:rgba(251,191,36,0.25);background:rgba(251,191,36,0.05);">
+            <h4>10. 🎨 "Art Tourism" — State-by-State Art Journey</h4>
+            <ul>
+              <li>One art form per week: Madhubani, Warli, Kolam, Pattachitra, Tanjore</li>
+              <li>Show the geography: which state? What materials are used? WHY that style?</li>
+              <li>Children create in that style, then "exhibit" their work</li>
+              <li>End of term: full gallery walk — parents invited to the "India Art Museum"</li>
+              <li><strong>Critical question:</strong> "What do you think future children will say about art made today?"</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PARENT ENGAGEMENT -->
+        <div class="guide-section green" id="parent">
+          <div class="guide-title">👨‍👩‍👧 Parent & Family Engagement</div>
+          <div class="guide-tip">
+            <strong>🏠 Cultural Home Link — Weekly</strong>
+            <p>Send home one "Cultural Connection Question" every Friday: "Ask a grandparent to tell you one story from when they were young." Children share the next Monday. This bridges school and home learning.</p>
+          </div>
+          <div class="guide-tip">
+            <strong>👩‍🏫 Parent as Expert — Monthly</strong>
+            <p>Invite parents to share their state, language, or expertise. A parent who cooks Punjabi food, or who plays sitar, or who knows Sanskrit shlokas is a priceless resource. Make this a regular feature — children feel proud when their parents are celebrated.</p>
+          </div>
+          <div class="guide-tip">
+            <strong>📤 Take-Home Cultural Kits</strong>
+            <p>Create simple kits for major festivals: Diwali Kit (LED diya, rangoli cutout, story card), Onam Kit (banana leaf template, onam story), Holi Kit (safe color information, paper flowers to make). Parents feel included and children have a tangible connection.</p>
+          </div>
+        </div>
+
+        <!-- CULTURAL CALENDAR -->
+        <div class="guide-section" id="calendar" style="border-left-color:#8B5CF6;">
+          <div class="guide-title">📅 Annual Cultural Teaching Calendar</div>
+          <table class="age-table">
+            <thead><tr><th>Month</th><th>Festival/Theme</th><th>Focus Module</th><th>Key Activity</th></tr></thead>
+            <tbody>
+              <tr><td>January</td><td>Makar Sankranti, Bihu, Pongal</td><td>Festivals</td><td>Kite making, Rangoli with rice flour</td></tr>
+              <tr><td>February</td><td>Valentine & Vasant Panchami</td><td>Nature, Languages</td><td>Saraswati Puja — decorate books</td></tr>
+              <tr><td>March</td><td>Holi, Ugadi</td><td>Festivals, Colors</td><td>Safe color mixing activity</td></tr>
+              <tr><td>April</td><td>Ram Navami, Baisakhi, Vishu</td><td>Stories, States</td><td>Ramayana puppet theater</td></tr>
+              <tr><td>May</td><td>Buddha Purnima</td><td>Stories, Values</td><td>Jataka tales + compassion discussion</td></tr>
+              <tr><td>June</td><td>Yoga Day (June 21)</td><td>Yoga</td><td>International Yoga Day session</td></tr>
+              <tr><td>July</td><td>Rath Yatra, Guru Purnima</td><td>Festivals</td><td>Mini chariot making activity</td></tr>
+              <tr><td>August</td><td>Independence Day, Onam, Krishna Janmashtami</td><td>States, Foods</td><td>Indian map art, sadhya (leaf meal)</td></tr>
+              <tr><td>September</td><td>Ganesh Chaturthi, Teachers' Day</td><td>Festivals, Music</td><td>Clay Ganesha making</td></tr>
+              <tr><td>October</td><td>Navratri, Dussehra</td><td>Dance, Music</td><td>Simple Garba dance + Garba sticks</td></tr>
+              <tr><td>November</td><td>Diwali, Guru Nanak Jayanti</td><td>Festivals, Languages</td><td>Paper diya making, Shabad Kirtan listening</td></tr>
+              <tr><td>December</td><td>Christmas, Winter Solstice</td><td>All modules</td><td>India multicultural celebration day</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- RESOURCES -->
+        <div class="guide-section" id="resources" style="border-left-color:#0D9488;">
+          <div class="guide-title">📖 Recommended Resources for Teachers</div>
+          <div class="guide-tip">
+            <strong>📚 Books for Children</strong>
+            <p>• Panchatantra (Amar Chitra Katha series)<br>• "The Legend of Diwali" by various authors<br>• "Amma, Tell Me About Holi" by Bhakti Mathur<br>• Karadi Tales (Indian folktales in English/Hindi/Regional)</p>
+          </div>
+          <div class="guide-tip">
+            <strong>🎵 Music for the Classroom</strong>
+            <p>• Classical ragas for background (Bhupali for morning calm)<br>• Rabindra Sangeet (Tagore) — extremely soothing<br>• Folk songs: Bihu, Garba, Bhavageete (Karnataka folk songs)<br>• Panchatantra audio stories (available free on YouTube)</p>
+          </div>
+          <div class="guide-tip">
+            <strong>🎨 Art Materials for Regional Crafts</strong>
+            <p>• White drawing sheets + black poster color = Madhubani base<br>• Clay (air-dry) = Terracotta pottery activity<br>• Rice flour + colored powder = temporary Kolam/Rangoli<br>• Old fabric scraps = Phulkari embroidery introduction</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>📋 Sanskriti Setu • Teacher Guidelines • <a href="../teacher.html" style="color:var(--saffron);">Teacher Portal</a></p></div></div></footer>
+<script src="../js/app.js"></script>
+<script src="../js/pdf-generator.js"></script>
+<script>
+// Smooth scroll for TOC
+document.querySelectorAll('.toc-item').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.toc-item').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

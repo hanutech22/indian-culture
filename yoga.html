@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yoga & Pranayama 🧘 | Sanskriti Setu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner">
+  <a href="../index.html" class="navbar-logo"><span class="logo-icon">🪔</span><span>Sanskriti Setu</span></a>
+  <ul class="navbar-nav"><li><a href="../student.html" class="nav-link">← Back</a></li></ul>
+  <div class="navbar-actions"><a href="../student.html" class="btn btn-outline btn-sm">← Back</a></div>
+  <div class="hamburger" onclick="document.querySelector('.navbar-nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</div></nav>
+
+<header class="module-hero" style="background:linear-gradient(135deg,#0D9488,#3B82F6,#8B5CF6);padding:3rem 0 6rem;">
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <div style="font-size:5rem;margin-bottom:0.75rem;" class="animate-bounce">🧘</div>
+    <h1>Yoga & Pranayama</h1>
+    <p>Yoga is India's gift to the world! 5000 years old and still the best exercise! 🌍</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;">
+      <h2>🌟 About Yoga</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="card animate-fadeInUp" style="max-width:750px;margin:0 auto 3rem;border:2px solid rgba(13,148,136,0.15);text-align:center;padding:2rem;">
+      <p style="font-size:1.05rem;color:var(--text-mid);line-height:1.9;">Yoga was born in India over <strong>5000 years ago!</strong> The word "Yoga" comes from Sanskrit meaning <strong>"to join"</strong> — joining body and mind. The United Nations declared <strong>June 21 as International Yoga Day</strong> because of India! Every year, crores of people around the world practice yoga. It keeps us healthy, calm, and happy! 🌸</p>
+    </div>
+
+    <!-- Yoga Asanas -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>🧘 Kids Yoga Asanas (Poses)</h2><div class="section-divider"></div><p>These poses are specially gentle for children aged 3-8. Try them every morning!</p></div>
+    <div class="grid-3" style="gap:1.5rem;margin-bottom:3rem;">
+      <div class="content-card animate-fadeInUp delay-1" style="border-top:4px solid var(--teal);text-align:center;">
+        <div class="emoji">🌲</div>
+        <h3>Vrikshasana (Tree Pose)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">Stand tall like a tree! Stand on one leg, place the other foot on your knee. Raise your arms up like branches. Hold for 10 seconds. <strong>Benefits: balance, focus, strong legs!</strong></p>
+        <button class="btn btn-teal btn-sm" onclick="showPoseGuide('tree')" style="margin-top:1rem;">▶ Try It!</button>
+      </div>
+      <div class="content-card animate-fadeInUp delay-2" style="border-top:4px solid #3B82F6;text-align:center;">
+        <div class="emoji">⛰️</div>
+        <h3>Tadasana (Mountain Pose)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">Stand straight and tall like a mountain! Feet together, arms at your sides, chin up. Take 5 deep breaths. <strong>Benefits: posture, confidence, breathing!</strong></p>
+        <button class="btn btn-sm" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8);color:white;border-radius:50px;padding:0.6rem 1.4rem;font-weight:700;margin-top:1rem;" onclick="showPoseGuide('mountain')">▶ Try It!</button>
+      </div>
+      <div class="content-card animate-fadeInUp delay-3" style="border-top:4px solid #F59E0B;text-align:center;">
+        <div class="emoji">🦋</div>
+        <h3>Baddha Konasana (Butterfly)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">Sit on the floor, bring the soles of your feet together. Flap your knees up and down like butterfly wings! <strong>Benefits: hip flexibility, calming energy!</strong></p>
+        <button class="btn btn-gold btn-sm" onclick="showPoseGuide('butterfly')" style="margin-top:1rem;">▶ Try It!</button>
+      </div>
+      <div class="content-card animate-fadeInUp delay-1" style="border-top:4px solid #EC4899;text-align:center;">
+        <div class="emoji">🐍</div>
+        <h3>Bhujangasana (Cobra Pose)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">Lie on your tummy, place palms near shoulders, gently lift your head and chest up like a cobra raising its hood. <strong>Benefits: strong back, opens chest!</strong></p>
+        <button class="btn btn-pink btn-sm" onclick="showPoseGuide('cobra')" style="margin-top:1rem;">▶ Try It!</button>
+      </div>
+      <div class="content-card animate-fadeInUp delay-2" style="border-top:4px solid #8B5CF6;text-align:center;">
+        <div class="emoji">🌙</div>
+        <h3>Balasana (Child's Pose)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">Kneel down, sit back on heels, stretch arms forward and rest head on the floor. This is the resting pose. <strong>Benefits: calming, relieves stress, rests the mind!</strong></p>
+        <button class="btn btn-sm" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);color:white;border-radius:50px;padding:0.6rem 1.4rem;font-weight:700;margin-top:1rem;" onclick="showPoseGuide('child')">▶ Try It!</button>
+      </div>
+      <div class="content-card animate-fadeInUp delay-3" style="border-top:4px solid #10B981;text-align:center;">
+        <div class="emoji">☀️</div>
+        <h3>Surya Namaskar (Sun Salutation)</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;">12 poses flowing together like a greeting to the Sun! A complete workout that exercises every part of the body. Do it every morning! <strong>Benefits: full body health!</strong></p>
+        <button class="btn btn-sm" style="background:linear-gradient(135deg,#10B981,#059669);color:white;border-radius:50px;padding:0.6rem 1.4rem;font-weight:700;margin-top:1rem;" onclick="showPoseGuide('surya')">▶ Try It!</button>
+      </div>
+    </div>
+
+    <!-- Pranayama / Breathing -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>💨 Pranayama — Breathing Exercises</h2><div class="section-divider"></div><p>Pranayama means controlling your breath. It is the secret superpower of Yoga!</p></div>
+
+    <!-- Breathing Exercise Interactive -->
+    <div class="card animate-fadeInUp" style="max-width:550px;margin:0 auto 1.5rem;text-align:center;padding:2.5rem;border:2px solid rgba(13,148,136,0.2);">
+      <h3 style="font-weight:800;margin-bottom:1rem;">🎈 Balloon Breathing Exercise</h3>
+      <div id="breathCircle" style="width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#3B82F6);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform 3s ease,background 3s ease;color:white;">🌬️</div>
+      <p id="breathText" style="font-size:1.2rem;font-weight:800;color:var(--teal);margin-bottom:1rem;">Click Start to begin!</p>
+      <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1.5rem;">Breathe IN when the circle grows. Breathe OUT when it shrinks. Do this 5 times!</p>
+      <button class="btn btn-teal btn-lg" onclick="startBreathing()" id="breathBtn">▶ Start Breathing</button>
+    </div>
+
+    <div class="grid-3" style="gap:1.5rem;margin-bottom:3rem;">
+      <div class="card animate-fadeInUp delay-1" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">👃</div>
+        <h4 style="font-weight:800;font-size:0.95rem;margin-bottom:0.4rem;">Anulom Vilom</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">Alternate nostril breathing. Brings calm and improves concentration. Great before exams!</p>
+      </div>
+      <div class="card animate-fadeInUp delay-2" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🐝</div>
+        <h4 style="font-weight:800;font-size:0.95rem;margin-bottom:0.4rem;">Bhramari (Bee Breath)</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">Make a humming sound like a bee! Closes eyes, covers ears gently. Relieves stress and anxiety.</p>
+      </div>
+      <div class="card animate-fadeInUp delay-3" style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🌬️</div>
+        <h4 style="font-weight:800;font-size:0.95rem;margin-bottom:0.4rem;">Deep Belly Breathing</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">Breathe deep into the belly, let it rise and fall. 4 counts in, hold 4, out 4. Very calming!</p>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>🎮 Yoga Quiz!</h2><div class="section-divider"></div></div>
+    <div class="quiz-container animate-scaleIn" id="quizContainer">
+      <div class="quiz-progress"><span id="qProgress">Question 1 of 4</span><div class="quiz-score-display">⭐ <span id="qScore">0</span></div></div>
+      <div id="questionText" class="quiz-question"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+      <div style="text-align:center;margin-top:1.5rem;"><button class="btn btn-teal" onclick="nextQuestion()" id="nextBtn" style="display:none;">Next →</button></div>
+    </div>
+    <div id="quizComplete" style="display:none;text-align:center;padding:2rem;">
+      <div style="font-size:4rem;">🧘</div>
+      <h2 style="font-size:1.8rem;font-weight:900;">Yoga Champion!</h2>
+      <p id="finalScoreText" style="color:var(--text-mid);margin:1rem 0 1.5rem;"></p>
+      <button class="btn btn-teal btn-lg" onclick="restartQuiz()">🔄 Try Again!</button>
+      <a href="../student.html" class="btn btn-primary btn-lg" style="margin-left:1rem;">Back to Modules</a>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>🧘 Sanskriti Setu • Yoga & Pranayama • <a href="../student.html" style="color:var(--saffron);">Back</a></p></div></div></footer>
+<script src="../js/app.js"></script>
+<script>
+function showPoseGuide(pose) {
+  const guides = {
+    tree: '🌲 Tree Pose: Stand on one foot! Put the other foot on your knee. Raise arms like branches. Hold for 10 seconds. Breathe slowly!',
+    mountain: '⛰️ Mountain Pose: Stand VERY straight. Feet together. Arms by side. Eyes forward. Take 5 big deep breaths. Feel tall and strong!',
+    butterfly: '🦋 Butterfly Pose: Sit down. Bring feet together. Flap your knees like wings — up and down! Do it 20 times. So fun!',
+    cobra: '🐍 Cobra Pose: Lie on tummy. Palms near shoulders. Push chest up gently. Look up. Hisssss like a cobra! Hold 5 seconds.',
+    child: '🌙 Child\'s Pose: Kneel down. Sit back. Stretch arms forward. Rest forehead on floor. Breathe slowly. This is your rest pose!',
+    surya: '☀️ Surya Namaskar: Start standing. Greet the sun with your hands. Then flow through 12 connecting poses. Do it slowly every morning!'
+  };
+  showToast(guides[pose], 'info');
+}
+
+let breathPhase = 0, breathTimer = null, breathCount = 0;
+function startBreathing() {
+  if (breathTimer) { clearInterval(breathTimer); breathTimer = null; document.getElementById('breathBtn').textContent = '▶ Start Breathing'; document.getElementById('breathText').textContent = 'Click Start to begin!'; document.getElementById('breathCircle').style.transform = 'scale(1)'; return; }
+  document.getElementById('breathBtn').textContent = '⏹ Stop';
+  function breathStep() {
+    const circle = document.getElementById('breathCircle');
+    const txt = document.getElementById('breathText');
+    if (breathPhase === 0) { circle.style.transform = 'scale(1.6)'; txt.textContent = '🌬️ Breathe IN... (4 counts)'; breathPhase = 1; }
+    else if (breathPhase === 1) { circle.style.transform = 'scale(1)'; txt.textContent = '💨 Breathe OUT... (4 counts)'; breathPhase = 0; breathCount++; if (breathCount >= 5) { txt.textContent = '🌟 Amazing! 5 breaths done!'; clearInterval(breathTimer); breathTimer = null; document.getElementById('breathBtn').textContent = '▶ Start Again'; breathCount = 0; showToast('🌟 Wonderful breathing! You are a Yoga champion!', 'success'); return; } }
+  }
+  breathStep();
+  breathTimer = setInterval(breathStep, 4000);
+}
+
+const quizData = [
+  { q: "Which country gave Yoga to the world?", opts: ["Greece","China","India","Egypt"], ans: 2 },
+  { q: "What does the word 'Yoga' mean in Sanskrit?", opts: ["Stretch","To join (body and mind)","Exercise","Breathe"], ans: 1 },
+  { q: "Which pose is called 'Tree Pose' in Yoga?", opts: ["Cobra Pose","Butterfly Pose","Vrikshasana","Tadasana"], ans: 2 },
+  { q: "International Yoga Day is celebrated on which date?", opts: ["January 26","June 21","August 15","October 2"], ans: 1 }
+];
+let qIndex = 0, score = 0, answered = false;
+function loadQuestion() { const q = quizData[qIndex]; document.getElementById('qProgress').textContent = 'Question ' + (qIndex+1) + ' of ' + quizData.length; document.getElementById('questionText').textContent = q.q; document.getElementById('quizFeedback').style.display = 'none'; document.getElementById('nextBtn').style.display = 'none'; answered = false; const opts = document.getElementById('quizOptions'); opts.innerHTML = ''; q.opts.forEach((o, i) => { const btn = document.createElement('button'); btn.className = 'quiz-option'; btn.textContent = o; btn.onclick = () => checkAnswer(i, btn); opts.appendChild(btn); }); }
+function checkAnswer(i, btn) { if (answered) return; answered = true; const q = quizData[qIndex]; const fb = document.getElementById('quizFeedback'); document.querySelectorAll('.quiz-option').forEach((b,idx) => { b.disabled = true; if (idx === q.ans) b.classList.add('correct'); }); if (i === q.ans) { score++; document.getElementById('qScore').textContent = score; btn.classList.add('correct'); fb.className = 'quiz-feedback correct'; fb.textContent = '🧘 Correct! Wonderful!'; } else { btn.classList.add('wrong'); fb.className = 'quiz-feedback wrong'; fb.textContent = '❌ Answer: ' + q.opts[q.ans]; } fb.style.display = 'block'; document.getElementById('nextBtn').style.display = 'inline-flex'; }
+function nextQuestion() { qIndex++; if (qIndex >= quizData.length) { document.getElementById('quizContainer').style.display = 'none'; document.getElementById('quizComplete').style.display = 'block'; document.getElementById('finalScoreText').textContent = score + '/' + quizData.length + (score >= 3 ? ' 🏆 Yoga Master!' : ' 💪 Keep practising!'); saveModuleProgress('yoga', score); } else loadQuestion(); }
+function restartQuiz() { qIndex = 0; score = 0; document.getElementById('qScore').textContent = '0'; document.getElementById('quizContainer').style.display = 'block'; document.getElementById('quizComplete').style.display = 'none'; loadQuestion(); }
+loadQuestion();
+</script>
+</body>
+</html>

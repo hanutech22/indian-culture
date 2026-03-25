@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indian Food Magic 🍛 | Sanskriti Setu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner">
+  <a href="../index.html" class="navbar-logo"><span class="logo-icon">🪔</span><span>Sanskriti Setu</span></a>
+  <div class="navbar-actions"><a href="../student.html" class="btn btn-outline btn-sm">← Back</a></div>
+  <div class="hamburger" onclick="document.querySelector('.navbar-nav').classList.toggle('open')"><span></span><span></span><span></span></div>
+</div></nav>
+
+<header class="module-hero" style="background:linear-gradient(135deg,#10B981,#F59E0B,#EF4444);padding:3rem 0 6rem;">
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <div style="font-size:5rem;margin-bottom:0.75rem;" class="animate-bounce">🍛</div>
+    <h1>Indian Food Magic</h1>
+    <p>India has over 1000 dishes! Let's explore the amazing flavors from every corner of India! 😋</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <!-- Regional Foods -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>🗺️ Taste the Regions of India</h2><div class="section-divider"></div></div>
+    <div class="grid-3" style="gap:1.5rem;margin-bottom:3rem;">
+      <div class="content-card animate-fadeInUp delay-1" style="border-top:4px solid #F59E0B;text-align:center;">
+        <div class="emoji">🥘</div>
+        <h3>🌏 North India</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Dal Makhani, Butter Naan, Rajma, Paneer Butter Masala, Biryani.</strong> North Indian food is rich and full of spices like cumin and coriander. Roti (flatbread) is eaten every day!</p>
+      </div>
+      <div class="content-card animate-fadeInUp delay-2" style="border-top:4px solid #10B981;text-align:center;">
+        <div class="emoji">🥥</div>
+        <h3>🌏 South India</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Idli, Dosa, Sambhar, Rasam, Coconut Chutney, Appam.</strong> South Indian food uses lots of coconut and rice. Idli is steamed — very healthy! Dosa is crispy and delicious!</p>
+      </div>
+      <div class="content-card animate-fadeInUp delay-3" style="border-top:4px solid #3B82F6;text-align:center;">
+        <div class="emoji">🥗</div>
+        <h3>🌏 West India</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Dhokla, Thepla, Poha, Vada Pav, Pav Bhaji, Shrikhand.</strong> Gujarat loves sweet food while Maharashtra loves spicy! Dhokla is steamed and very fluffy!</p>
+      </div>
+      <div class="content-card animate-fadeInUp delay-1" style="border-top:4px solid #EC4899;text-align:center;">
+        <div class="emoji">🐟</div>
+        <h3>🌏 East India</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Macher Jhol (fish curry), Rasgulla, Sandesh, Aloo Posto.</strong> Bengal is famous for fish and sweets! Rasgulla is a famous white sweet that melts in the mouth!</p>
+      </div>
+      <div class="content-card animate-fadeInUp delay-2" style="border-top:4px solid #8B5CF6;text-align:center;">
+        <div class="emoji">🌶️</div>
+        <h3>🌏 Northeast India</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Rice, Bamboo Shoots, Fermented foods, Pork dishes.</strong> Northeast cuisine is very unique and uses many herbs and plants from the jungle. Very healthy and natural!</p>
+      </div>
+      <div class="content-card animate-fadeInUp delay-3" style="border-top:4px solid #0D9488;text-align:center;">
+        <div class="emoji">🍬</div>
+        <h3>🌏 Festival Sweets</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;line-height:1.7;"><strong>Ladoo, Kheer, Halwa, Modak, Jalebi, Barfi.</strong> Every festival has its special sweet! Modak is Lord Ganesha's favorite! Ladoo is made for every happy occasion!</p>
+      </div>
+    </div>
+
+    <!-- Food Matching Game -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>🎮 Match Food to Its State!</h2><div class="section-divider"></div><p>Click a food, then click its state! See how many you know!</p></div>
+    <div style="max-width:700px;margin:0 auto 2rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+        <div>
+          <h4 style="font-weight:800;margin-bottom:1rem;color:var(--text-mid);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">🍽️ Foods</h4>
+          <div id="foodItems" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+        </div>
+        <div>
+          <h4 style="font-weight:800;margin-bottom:1rem;color:var(--text-mid);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;">🗺️ States</h4>
+          <div id="stateItems" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <p id="matchScore" style="font-weight:700;color:var(--teal);font-size:1rem;"></p>
+        <button class="btn btn-sm" style="background:linear-gradient(135deg,#10B981,#059669);color:white;border-radius:50px;padding:0.6rem 1.4rem;font-weight:700;margin-top:0.5rem;" onclick="resetMatch()">🔄 Reset</button>
+      </div>
+    </div>
+
+    <!-- Healthy Indian Foods -->
+    <div class="card animate-fadeInUp" style="background:linear-gradient(135deg,rgba(16,185,129,0.05),rgba(245,158,11,0.05));border:2px solid rgba(16,185,129,0.15);margin-bottom:3rem;">
+      <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:1.5rem;text-align:center;">💪 Super Healthy Indian Foods!</h3>
+      <div class="grid-3" style="gap:1rem;text-align:center;">
+        <div style="padding:1rem;background:white;border-radius:12px;box-shadow:var(--shadow-soft);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🌿</div><h4 style="font-weight:800;font-size:0.9rem;">Tulsi Kadha</h4><p style="font-size:0.8rem;color:var(--text-mid);">Tulsi leaves + ginger + honey = magic immunity drink!</p>
+        </div>
+        <div style="padding:1rem;background:white;border-radius:12px;box-shadow:var(--shadow-soft);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🥛</div><h4 style="font-weight:800;font-size:0.9rem;">Haldi Doodh</h4><p style="font-size:0.8rem;color:var(--text-mid);">Turmeric milk! Golden milk. Fights illness and helps sleep.</p>
+        </div>
+        <div style="padding:1rem;background:white;border-radius:12px;box-shadow:var(--shadow-soft);">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">🌾</div><h4 style="font-weight:800;font-size:0.9rem;">Millet & Dal</h4><p style="font-size:0.8rem;color:var(--text-mid);">Ancient Indian grains full of protein and fiber for strong children!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:2rem;"><h2>🎮 Food Quiz!</h2><div class="section-divider"></div></div>
+    <div class="quiz-container animate-scaleIn" id="quizContainer">
+      <div class="quiz-progress"><span id="qProgress">Q 1 of 4</span><div class="quiz-score-display">⭐ <span id="qScore">0</span></div></div>
+      <div id="questionText" class="quiz-question"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+      <div style="text-align:center;margin-top:1.5rem;"><button class="btn" style="background:linear-gradient(135deg,#10B981,#059669);color:white;border-radius:50px;padding:0.8rem 2rem;font-weight:700;" onclick="nextQuestion()" id="nextBtn" style="display:none;">Next →</button></div>
+    </div>
+    <div id="quizComplete" style="display:none;text-align:center;padding:2rem;">
+      <div style="font-size:4rem;">🍛</div><h2 style="font-size:1.8rem;font-weight:900;">Food Expert!</h2>
+      <p id="finalScoreText" style="color:var(--text-mid);margin:1rem 0 1.5rem;"></p>
+      <button class="btn btn-gold btn-lg" onclick="restartQuiz()">🔄 Try Again!</button>
+      <a href="../student.html" class="btn btn-teal btn-lg" style="margin-left:1rem;">Back</a>
+    </div>
+  </div>
+</main>
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>🍛 Sanskriti Setu • Indian Food • <a href="../student.html" style="color:var(--saffron);">Back</a></p></div></div></footer>
+<script src="../js/app.js"></script>
+<script>
+// MATCHING GAME
+const matchPairs = [
+  { food: '🥘 Butter Naan', state: '🌏 Punjab' },
+  { food: '🥥 Idli Sambhar', state: '🌏 Tamil Nadu' },
+  { food: '🍬 Dhokla', state: '🌏 Gujarat' },
+  { food: '🐟 Rasgulla', state: '🌏 West Bengal' }
+];
+let selectedFood = null, matchedCount = 0;
+
+function buildMatch() {
+  const fi = document.getElementById('foodItems');
+  const si = document.getElementById('stateItems');
+  fi.innerHTML = ''; si.innerHTML = '';
+  const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+  shuffle(matchPairs).forEach(p => {
+    const fb = document.createElement('button');
+    fb.className = 'btn btn-outline btn-sm w-full';
+    fb.textContent = p.food;
+    fb.style.textAlign = 'left';
+    fb.dataset.food = p.food;
+    fb.onclick = () => selectFood(p.food, fb);
+    fi.appendChild(fb);
+  });
+  shuffle(matchPairs).forEach(p => {
+    const sb = document.createElement('button');
+    sb.className = 'btn btn-sm w-full';
+    sb.style.cssText = 'background:white;border:2.5px solid #E5E7EB;border-radius:50px;text-align:left;font-weight:700;padding:0.6rem 1.2rem;transition:all 0.3s;';
+    sb.textContent = p.state;
+    sb.dataset.state = p.state;
+    sb.onclick = () => checkMatch(p.state, p.food, sb);
+    si.appendChild(sb);
+  });
+}
+
+function selectFood(food, btn) {
+  document.querySelectorAll('#foodItems button').forEach(b => b.style.background = '');
+  selectedFood = food;
+  btn.style.background = 'rgba(255,107,53,0.1)';
+  btn.style.borderColor = 'var(--saffron)';
+}
+
+function checkMatch(state, food, btn) {
+  if (!selectedFood) { showToast('👆 First click a food on the left!', 'info'); return; }
+  const correct = matchPairs.find(p => p.food === selectedFood && p.state === state);
+  if (correct) {
+    btn.style.background = 'rgba(16,185,129,0.12)';
+    btn.style.borderColor = '#10B981';
+    document.querySelectorAll('#foodItems button').forEach(b => { if (b.dataset.food === selectedFood) { b.style.background = 'rgba(16,185,129,0.12)'; b.style.borderColor = '#10B981'; b.disabled = true; } });
+    btn.disabled = true;
+    matchedCount++;
+    document.getElementById('matchScore').textContent = '✅ ' + matchedCount + ' / ' + matchPairs.length + ' matched!';
+    showToast('🎉 Correct match!', 'success');
+    if (matchedCount === matchPairs.length) showToast('🏆 All matched! You are a Food Geography Expert!', 'success');
+  } else {
+    btn.style.borderColor = '#EF4444';
+    showToast('❌ Try again!', 'error');
+    setTimeout(() => btn.style.borderColor = '#E5E7EB', 1000);
+  }
+  selectedFood = null;
+  document.querySelectorAll('#foodItems button').forEach(b => { b.style.background = ''; b.style.borderColor = ''; });
+}
+
+function resetMatch() { matchedCount = 0; selectedFood = null; document.getElementById('matchScore').textContent = ''; buildMatch(); }
+buildMatch();
+
+const quizData = [
+  { q: "Which sweet dish is Lord Ganesha's favourite?", opts: ["Ladoo","Jalebi","Modak","Halwa"], ans: 2 },
+  { q: "Idli and Dosa are famous foods from which region?", opts: ["North India","West India","South India","East India"], ans: 2 },
+  { q: "What is 'Haldi Doodh'?", opts: ["A type of rice","Turmeric milk","A vegetable","A sweet"], ans: 1 },
+  { q: "Rasgulla is the famous sweet of which state?", opts: ["Gujarat","Punjab","West Bengal","Rajasthan"], ans: 2 }
+];
+let qIndex = 0, score = 0, answered = false;
+function loadQuestion() { const q = quizData[qIndex]; document.getElementById('qProgress').textContent = 'Q ' + (qIndex+1) + ' of ' + quizData.length; document.getElementById('questionText').textContent = q.q; document.getElementById('quizFeedback').style.display = 'none'; document.getElementById('nextBtn').style.display = 'none'; answered = false; const opts = document.getElementById('quizOptions'); opts.innerHTML = ''; q.opts.forEach((o, i) => { const btn = document.createElement('button'); btn.className = 'quiz-option'; btn.textContent = o; btn.onclick = () => checkAnswer(i, btn); opts.appendChild(btn); }); }
+function checkAnswer(i, btn) { if (answered) return; answered = true; const q = quizData[qIndex]; const fb = document.getElementById('quizFeedback'); document.querySelectorAll('.quiz-option').forEach((b,idx) => { b.disabled = true; if (idx === q.ans) b.classList.add('correct'); }); if (i === q.ans) { score++; document.getElementById('qScore').textContent = score; btn.classList.add('correct'); fb.className = 'quiz-feedback correct'; fb.textContent = '😋 Correct! Delicious knowledge!'; } else { btn.classList.add('wrong'); fb.className = 'quiz-feedback wrong'; fb.textContent = '❌ Answer: ' + q.opts[q.ans]; } fb.style.display = 'block'; document.getElementById('nextBtn').style.display = 'inline-flex'; }
+function nextQuestion() { qIndex++; if (qIndex >= quizData.length) { document.getElementById('quizContainer').style.display = 'none'; document.getElementById('quizComplete').style.display = 'block'; document.getElementById('finalScoreText').textContent = score + '/' + quizData.length + (score >= 3 ? ' 🏆 Food Expert!' : ' 💪 Keep exploring!'); saveModuleProgress('food', score); } else loadQuestion(); }
+function restartQuiz() { qIndex = 0; score = 0; document.getElementById('qScore').textContent = '0'; document.getElementById('quizContainer').style.display = 'block'; document.getElementById('quizComplete').style.display = 'none'; loadQuestion(); }
+loadQuestion();
+</script>
+</body>
+</html>

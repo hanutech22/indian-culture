@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>States of India 🗺️ | Sanskriti Setu</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .state-card { background:white; border-radius:20px; padding:1.5rem; box-shadow:var(--shadow-soft); transition:var(--transition); cursor:pointer; border:2px solid transparent; }
+    .state-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-medium); border-color:var(--saffron); }
+    .state-card .state-emoji { font-size:3rem; display:block; margin-bottom:0.6rem; }
+    .state-card h3 { font-size:1rem; font-weight:800; color:var(--text-dark); margin-bottom:0.3rem; }
+    .state-card .state-tag { font-size:0.75rem; color:var(--text-mid); }
+    .activity-tabs { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+    .act-tab { padding:0.5rem 1.2rem; border-radius:50px; font-weight:700; font-size:0.85rem; cursor:pointer; border:2.5px solid #E5E7EB; transition:var(--transition); background:white; color:var(--text-mid); }
+    .act-tab.active, .act-tab:hover { background:linear-gradient(135deg,var(--saffron),var(--gold)); color:white; border-color:transparent; }
+    .coloring-area { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    .color-cell { aspect-ratio:1; border-radius:12px; border:3px dashed #E5E7EB; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:2rem; transition:all 0.3s; background:white; position:relative; overflow:hidden; }
+    .color-cell:hover { border-color:var(--saffron); transform:scale(1.05); }
+    .color-cell.colored { border-style:solid; border-color:transparent; }
+    .palette { display:flex; gap:0.6rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .pal-color { width:36px; height:36px; border-radius:50%; cursor:pointer; border:3px solid transparent; transition:all 0.3s; }
+    .pal-color:hover, .pal-color.active { border-color:var(--text-dark); transform:scale(1.2); }
+    .puzzle-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; max-width:450px; margin:0 auto; }
+    .puzzle-tile { aspect-ratio:1; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; font-weight:800; cursor:pointer; transition:all 0.3s; border:2.5px solid #E5E7EB; background:white; box-shadow:var(--shadow-soft); user-select:none; }
+    .puzzle-tile:hover { border-color:var(--saffron); }
+    .puzzle-tile.empty { background:rgba(255,107,53,0.08); border-color:var(--saffron); cursor:default; }
+    .shape-canvas { display:grid; grid-template-columns:repeat(5,1fr); gap:0.75rem; }
+    .shape-item { aspect-ratio:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.3rem; cursor:pointer; padding:0.5rem; border-radius:12px; border:2.5px dashed #E5E7EB; transition:all 0.3s; background:white; }
+    .shape-item:hover { border-color:var(--pink); background:rgba(236,72,153,0.04); }
+    .shape-item .shape-svg { transition:all 0.3s; }
+    .shape-item:hover .shape-svg { transform:scale(1.2) rotate(5deg); }
+    .shape-item span { font-size:0.68rem; font-weight:700; color:var(--text-mid); }
+    .states-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:1.2rem; }
+    .state-detail-modal {
+      position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.55); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center; padding:1rem; animation:fadeIn 0.3s ease;
+    }
+    .state-detail-box { background:white; border-radius:28px; padding:2.5rem; max-width:620px; width:100%; max-height:85vh; overflow-y:auto; box-shadow:var(--shadow-strong); animation:scaleIn 0.3s ease; position:relative; }
+    .close-btn { position:absolute; top:1rem; right:1rem; background:#F3F4F6; border:none; border-radius:50%; width:34px; height:34px; font-size:1rem; cursor:pointer; transition:var(--transition); }
+    .close-btn:hover { background:#E5E7EB; }
+    .pdf-bar { background:linear-gradient(135deg,rgba(255,107,53,0.06),rgba(245,158,11,0.06)); border:2px solid rgba(255,107,53,0.15); border-radius:16px; padding:1.2rem 1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem; }
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-logo"><span class="logo-icon">🪔</span><span>Sanskriti Setu</span></a>
+    <ul class="navbar-nav" id="navMenu"><li><a href="../student.html" class="nav-link">← Back</a></li></ul>
+    <div class="navbar-actions"><a href="../student.html" class="btn btn-outline btn-sm">← Student Portal</a></div>
+    <div class="hamburger" onclick="document.getElementById('navMenu').classList.toggle('open')"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<header class="module-hero" style="background:linear-gradient(135deg,#1A1A2E,#E96F51,#F59E0B);padding:3rem 0 6rem;">
+  <div class="container text-center" style="position:relative;z-index:2;">
+    <div style="font-size:5rem;margin-bottom:0.75rem;" class="animate-bounce">🗺️</div>
+    <h1 class="animate-fadeInUp">States of India — One Country, Many Cultures!</h1>
+    <p class="animate-fadeInUp delay-2">India has 28 states and 8 Union Territories. Each one is unique with its own culture, food, dance, language, and tradition! 🌈</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+
+    <!-- PDF Download Bar -->
+    <div class="pdf-bar animate-fadeInUp">
+      <div>
+        <h4 style="font-weight:800;font-size:1rem;">📄 Download States of India Workbook</h4>
+        <p style="font-size:0.82rem;color:var(--text-mid);">15-page printable PDF with all state cultures, activities & worksheets</p>
+      </div>
+      <button onclick="downloadPDF('states')" class="btn btn-primary btn-sm">⬇ Download PDF</button>
+    </div>
+
+    <!-- ACTIVITIES TABS -->
+    <div class="section-header animate-fadeInUp" style="margin-bottom:1.5rem;">
+      <h2>🎮 Choose an Activity!</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="activity-tabs animate-fadeInUp">
+      <button class="act-tab active" onclick="showActivity('explore',this)">🗺️ Explore States</button>
+      <button class="act-tab" onclick="showActivity('coloring',this)">🎨 Coloring Fun</button>
+      <button class="act-tab" onclick="showActivity('shaping',this)">📐 Shape Art</button>
+      <button class="act-tab" onclick="showActivity('puzzle',this)">🧩 Puzzle Game</button>
+      <button class="act-tab" onclick="showActivity('quiz',this)">🎮 States Quiz</button>
+    </div>
+
+    <!-- ===== EXPLORE STATES ===== -->
+    <div id="act-explore">
+      <div class="states-grid">
+
+        <div class="state-card animate-fadeInUp delay-1" onclick="showStateDetail('maharashtra')">
+          <span class="state-emoji">🦁</span>
+          <h3>Maharashtra</h3>
+          <p class="state-tag">🎭 Lavani, Warli Art, Ganesh Chaturthi • 🍛 Vada Pav</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-saffron">West</span><span class="badge badge-teal">Mumbai</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-2" onclick="showStateDetail('rajasthan')">
+          <span class="state-emoji">🏰</span>
+          <h3>Rajasthan</h3>
+          <p class="state-tag">💃 Ghoomar Dance, Forts, Camels • 🍛 Dal Baati Churma</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-gold">North</span><span class="badge badge-saffron">Jaipur</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-3" onclick="showStateDetail('kerala')">
+          <span class="state-emoji">🌴</span>
+          <h3>Kerala</h3>
+          <p class="state-tag">🎭 Kathakali, Onam, Backwaters • 🥥 Fish Curry</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-teal">South</span><span class="badge badge-saffron">Thiruvananthapuram</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-1" onclick="showStateDetail('punjab')">
+          <span class="state-emoji">🌾</span>
+          <h3>Punjab</h3>
+          <p class="state-tag">🥁 Bhangra, Baisakhi, Golden Temple • 🥘 Makki di Roti</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-gold">North</span><span class="badge badge-teal">Amritsar</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-2" onclick="showStateDetail('tamilnadu')">
+          <span class="state-emoji">🏛️</span>
+          <h3>Tamil Nadu</h3>
+          <p class="state-tag">💃 Bharatanatyam, Pongal, Temples • 🍛 Idli Sambhar</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-pink">South</span><span class="badge badge-teal">Chennai</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-3" onclick="showStateDetail('gujarat')">
+          <span class="state-emoji">🦁</span>
+          <h3>Gujarat</h3>
+          <p class="state-tag">💃 Garba, Navratri, Asiatic Lions • 🍬 Dhokla</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-saffron">West</span><span class="badge badge-gold">Gandhi's State</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-1" onclick="showStateDetail('westbengal')">
+          <span class="state-emoji">🐯</span>
+          <h3>West Bengal</h3>
+          <p class="state-tag">🎭 Durga Puja, Rabindra Sangeet • 🐟 Macher Jhol</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-teal">East</span><span class="badge badge-pink">Kolkata</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-2" onclick="showStateDetail('uttarpradesh')">
+          <span class="state-emoji">🕌</span>
+          <h3>Uttar Pradesh</h3>
+          <p class="state-tag">🕌 Taj Mahal, Kumbh Mela, Kathak • 🍛 Awadhi Biryani</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-gold">North</span><span class="badge badge-saffron">Lucknow</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-3" onclick="showStateDetail('assam')">
+          <span class="state-emoji">🦏</span>
+          <h3>Assam</h3>
+          <p class="state-tag">🎭 Bihu Dance, One-horned Rhino, Tea • 🍚 Assam Tea</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-teal">Northeast</span><span class="badge badge-gold">Guwahati</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-1" onclick="showStateDetail('odisha')">
+          <span class="state-emoji">🌊</span>
+          <h3>Odisha</h3>
+          <p class="state-tag">💃 Odissi Dance, Jagannath Temple, Sand Art • 🍛 Dalma</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-teal">East</span><span class="badge badge-pink">Bhubaneswar</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-2" onclick="showStateDetail('himachalpradesh')">
+          <span class="state-emoji">🏔️</span>
+          <h3>Himachal Pradesh</h3>
+          <p class="state-tag">❄️ Snow, Kullu Dussehra, Apples • 🍎 Himalayan Food</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-saffron">North</span><span class="badge badge-teal">Shimla</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-3" onclick="showStateDetail('goa')">
+          <span class="state-emoji">🏖️</span>
+          <h3>Goa</h3>
+          <p class="state-tag">🎭 Carnival, Beaches, Portuguese Heritage • 🐟 Fish Curry</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-pink">West</span><span class="badge badge-teal">Panaji</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-1" onclick="showStateDetail('karnataka')">
+          <span class="state-emoji">🐘</span>
+          <h3>Karnataka</h3>
+          <p class="state-tag">🎭 Dasara Festival, Yakshagana, IT Hub • 🍛 Bisi Bele Bath</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-teal">South</span><span class="badge badge-gold">Bengaluru</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-2" onclick="showStateDetail('manipur')">
+          <span class="state-emoji">💎</span>
+          <h3>Manipur</h3>
+          <p class="state-tag">💃 Manipuri Dance, Ras Lila, Polo sport • 🌺 Handloom</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-pink">Northeast</span><span class="badge badge-teal">Imphal</span>
+          </div>
+        </div>
+
+        <div class="state-card animate-fadeInUp delay-3" onclick="showStateDetail('bihar')">
+          <span class="state-emoji">🕊️</span>
+          <h3>Bihar</h3>
+          <p class="state-tag">🙏 Bodh Gaya, Chhath Puja, Madhubani Art • 🍚 Litti Chokha</p>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;">
+            <span class="badge badge-gold">East</span><span class="badge badge-saffron">Patna</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== COLORING ACTIVITY ===== -->
+    <div id="act-coloring" style="display:none;">
+      <div class="card animate-scaleIn" style="max-width:700px;margin:0 auto;">
+        <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:0.5rem;">🎨 Color the States!</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1rem;">Click a color from the palette, then click the state box to color it! Make India beautiful!</p>
+        <div class="palette" id="palette"></div>
+        <div class="coloring-area" id="coloringArea"></div>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+          <button onclick="resetColoring()" class="btn btn-outline btn-sm">🔄 Reset</button>
+          <button onclick="showToast('🎨 Great coloring! You can print this page!','success')" class="btn btn-primary btn-sm">🖨️ Print Art</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SHAPE ART ===== -->
+    <div id="act-shaping" style="display:none;">
+      <div class="card animate-scaleIn" style="max-width:700px;margin:0 auto;">
+        <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:0.5rem;">📐 India Shape Art!</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1.5rem;">Click shapes to build patterns — discover cultural designs from different Indian states!</p>
+        <div class="shape-canvas" id="shapeCanvas"></div>
+        <div style="margin-top:1.5rem;padding:1.2rem;background:var(--cream-dark);border-radius:14px;">
+          <h4 style="font-weight:800;font-size:0.9rem;margin-bottom:0.75rem;">🎨 State Patterns to Try:</h4>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <button onclick="applyPattern('rangoli')" class="btn btn-sm btn-primary">🌸 Rangoli</button>
+            <button onclick="applyPattern('warli')" class="btn btn-sm btn-teal">⭕ Warli Art</button>
+            <button onclick="applyPattern('kolam')" class="btn btn-sm btn-gold">🔷 Kolam</button>
+            <button onclick="resetShapes()" class="btn btn-sm btn-outline">🔄 Clear</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PUZZLE ===== -->
+    <div id="act-puzzle" style="display:none;">
+      <div class="card animate-scaleIn" style="max-width:500px;margin:0 auto;text-align:center;">
+        <h3 style="font-weight:800;font-size:1.2rem;margin-bottom:0.5rem;">🧩 States Word Puzzle!</h3>
+        <p style="color:var(--text-mid);font-size:0.9rem;margin-bottom:1rem;">Arrange the letters to spell the Indian state! Click tiles to rearrange!</p>
+        <div style="font-size:2.5rem;margin-bottom:1rem;" id="puzzleHint">🏰</div>
+        <p id="puzzleClue" style="font-weight:700;color:var(--text-mid);margin-bottom:1.2rem;font-size:0.9rem;"></p>
+        <div class="puzzle-grid" id="puzzleGrid"></div>
+        <div style="margin-top:1.2rem;">
+          <p id="puzzleResult" style="font-weight:800;font-size:1.1rem;min-height:1.5rem;"></p>
+        </div>
+        <div style="display:flex;gap:1rem;justify-content:center;margin-top:1rem;">
+          <button onclick="shufflePuzzle()" class="btn btn-outline btn-sm">🔀 Shuffle</button>
+          <button onclick="nextPuzzle()" class="btn btn-primary btn-sm">Next Puzzle →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== QUIZ ===== -->
+    <div id="act-quiz" style="display:none;">
+      <div class="quiz-container animate-scaleIn">
+        <div class="quiz-progress">
+          <span id="qProgress">Q 1 of 6</span>
+          <div class="quiz-score-display">⭐ <span id="qScore">0</span></div>
+        </div>
+        <div id="questionText" class="quiz-question"></div>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div id="quizFeedback" class="quiz-feedback" style="display:none;"></div>
+        <div style="text-align:center;margin-top:1.5rem;">
+          <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn" style="display:none;">Next →</button>
+        </div>
+      </div>
+      <div id="quizComplete" style="display:none;text-align:center;padding:2rem;">
+        <div style="font-size:4rem;">🗺️</div>
+        <h2 style="font-size:1.8rem;font-weight:900;">India Explorer!</h2>
+        <p id="finalScoreText" style="color:var(--text-mid);margin:1rem 0 1.5rem;"></p>
+        <button class="btn btn-primary btn-lg" onclick="restartQuiz()">🔄 Try Again!</button>
+        <a href="../student.html" class="btn btn-teal btn-lg" style="margin-left:1rem;">Back</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- State Detail Modal -->
+<div class="state-detail-modal" id="stateModal" style="display:none;">
+  <div class="state-detail-box">
+    <button class="close-btn" onclick="closeModal()">✕</button>
+    <div id="stateModalContent"></div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><div class="footer-bottom"><p>🗺️ Sanskriti Setu • States of India • <a href="../student.html" style="color:var(--saffron);">Back</a></p></div></div></footer>
+<script src="../js/app.js"></script>
+<script src="../js/pdf-generator.js"></script>
+<script>
+// ===== ACTIVITY TABS =====
+function showActivity(id, btn) {
+  ['explore','coloring','shaping','puzzle','quiz'].forEach(a => document.getElementById('act-'+a).style.display='none');
+  document.getElementById('act-'+id).style.display='block';
+  document.querySelectorAll('.act-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (id==='coloring') initColoring();
+  if (id==='shaping') initShapes();
+  if (id==='puzzle') initPuzzle();
+  if (id==='quiz') { qIndex=0; score=0; document.getElementById('qScore').textContent='0'; document.getElementById('quizContainer'||'').style&&(document.getElementById('quizContainer')&&(document.getElementById('quizContainer').style.display='block')); document.getElementById('quizComplete').style.display='none'; loadQuestion(); }
+}
+
+// ===== STATE DETAIL DATA =====
+const stateData = {
+  maharashtra: { name:'Maharashtra', emoji:'🦁', capital:'Mumbai', dance:'Lavani & Tamasha', art:'Warli Painting, Paithani Sarees', festival:'Ganesh Chaturthi (biggest!), Gudi Padwa', food:'Vada Pav, Pav Bhaji, Puran Poli, Modak', music:'Powada (ballads), Kirtan, Shehnai', fact:'Maharashtra has the world\'s largest Ganesh festival! Over 1.5 lakh Ganesh idols are installed across Mumbai every year!' },
+  rajasthan: { name:'Rajasthan', emoji:'🏰', capital:'Jaipur', dance:'Ghoomar, Kalbelia, Bhavai', art:'Blue Pottery, Miniature Painting, Bandhani cloth', festival:'Pushkar Fair, Teej, Desert Festival', food:'Dal Baati Churma, Ker Sangri, Ghevar', music:'Manganiyar music, Morchang (jaw harp)', fact:'Rajasthan means "Land of Kings." It has more forts and palaces than any other state in India!' },
+  kerala: { name:'Kerala', emoji:'🌴', capital:'Thiruvananthapuram', dance:'Kathakali, Mohiniattam, Theyyam', art:'Mural paintings on temple walls, Coir weaving', festival:'Onam (10 days!), Thrissur Pooram (elephant procession)', food:'Fish curry with Rice, Appam, Sadya (feast on banana leaf)', music:'Sopana Sangeetham (temple music), Panchavadyam', fact:'Kerala is called "God\'s Own Country." It has 590 km of backwaters (canals) and is 100% literate!' },
+  punjab: { name:'Punjab', emoji:'🌾', capital:'Chandigarh', dance:'Bhangra (men), Gidda (women)', art:'Phulkari embroidery, Paranda (hair accessory)', festival:'Baisakhi, Lohri, Hola Mohalla (Sikh warrior festival)', food:'Makki di Roti with Sarson da Saag, Lassi, Amritsari Kulcha', music:'Punjabi folk music, Dhol beats, Tumbi instrument', fact:'Punjab is called "the breadbasket of India." It produces 40% of India\'s wheat and rice!' },
+  tamilnadu: { name:'Tamil Nadu', emoji:'🏛️', capital:'Chennai', dance:'Bharatanatyam, Kolattam, Kummi', art:'Tanjore Painting (gold leaf art), Bronze sculptures', festival:'Pongal (4 days), Jallikattu, Karthigai Deepam', food:'Idli, Dosa, Chettinad Chicken, Filter Coffee', music:'Carnatic Classical music (650+ year tradition), Nadaswaram', fact:'Tamil language is over 2000 years old — one of the world\'s oldest living languages. Tamil Nadu has over 30,000 temples!' },
+  gujarat: { name:'Gujarat', emoji:'🦁', capital:'Gandhinagar', dance:'Garba (Navratri - 9 nights!), Dandiya Raas', art:'Bandhani tie-dye, Kutch embroidery, Patola silk sarees', festival:'Navratri, Uttarayan (Kite Festival), Rann Utsav', food:'Dhokla, Thepla, Undhiyu, Fafda, Jalebi', music:'Sugam Sangeet, folk songs during Garba', fact:'Gujarat is birthplace of Mahatma Gandhi! The famous Rann of Kutch turns into the world\'s largest salt flat every year!' },
+  westbengal: { name:'West Bengal', emoji:'🐯', capital:'Kolkata', dance:'Rabindra Nritya, Chhau, Baul dance', art:'Kalighat Painting, Kantha embroidery, Terracotta temples', festival:'Durga Puja (grandest in India!), Poush Mela, Dol Jatra', food:'Macher Jhol (fish curry), Rasgulla, Mishti Doi, Luchi', music:'Rabindra Sangeet (Tagore songs), Baul folk music', fact:'West Bengal gave India its National Anthem (Jana Gana Mana) by Rabindranath Tagore! Kolkata has Asia\'s largest book fair every year!' },
+  uttarpradesh: { name:'Uttar Pradesh', emoji:'🕌', capital:'Lucknow', dance:'Kathak, Ras Lila, Nautanki', art:'Chikankari embroidery, Zardozi, Mirzapur carpets', festival:'Kumbh Mela (world\'s largest gathering!), Ram Navami, Diwali', food:'Awadhi Biryani, Petha (Agra), Chaat, Kababs', music:'Thumri, Dadra, classical Hindustani music', fact:'The Taj Mahal in Agra (UP) is one of the 7 Wonders of the World! Varanasi (Banaras) is the world\'s oldest living city!' },
+  assam: { name:'Assam', emoji:'🦏', capital:'Dispur (Guwahati)', dance:'Bihu (3 types!), Sattriya (classical)', art:'Muga silk (golden silk — only in Assam!), Cane & bamboo craft', festival:'Bihu (January, April, October), Ambubachi Mela', food:'Assam tea, Rice & Fish, Xaak (leafy vegetables), Duck meat curry', music:'Bihu songs, Bhortal cymbals, Dhol, Pepa (horn)', fact:'Assam has the world\'s only one-horned rhinoceros in Kaziranga National Park! Assam produces 55% of all tea in India!' },
+  odisha: { name:'Odisha', emoji:'🌊', capital:'Bhubaneswar', dance:'Odissi (one of oldest classical dances!), Chhau, Gotipua', art:'Pattachitra painting, Sand Art (world-famous!), Stone carving', festival:'Rath Yatra (Lord Jagannath\'s chariot), Konark Dance Festival', food:'Dalma (lentil with vegetables), Pakhala (fermented rice), Rasabali', music:'Odissi music, Manabasa Gurubara songs', fact:'Odisha\'s Sudarshan Pattnaik is world-famous for sand sculptures! The Konark Sun Temple is a UNESCO World Heritage site.' },
+  himachalpradesh: { name:'Himachal Pradesh', emoji:'🏔️', capital:'Shimla', dance:'Nati (world\'s largest folk dance!), Kullu Nati', art:'Pahari miniature paintings, Chamba Rumal embroidery', festival:'Kullu Dussehra (7 days of raths/chariots), Lohri, Baisakhi', food:'Chha Gosht (lamb curry), Dham (traditional feast), Siddu bread, Apples!', music:'Pahari folk songs, Naati, Kariyala theater', fact:'Himachal Pradesh is called "Dev Bhumi" (Land of Gods). It has 33% of its land as forests and is home to 10,000+ temples!' },
+  goa: { name:'Goa', emoji:'🏖️', capital:'Panaji', dance:'Fugdi, Dekhni, Corridinho (Portuguese-influenced!)', art:'Azulejo tiles, Kunbi weaving, Cashew fenny (local craft)', festival:'Carnival (most colorful festival!), Goa Shigmo, Christmas', food:'Goan Fish Curry, Prawn Balchão, Xec Xec, Bebinca (layered cake)', music:'Mando (romantic songs), Dekhni, Fado (Portuguese influence)', fact:'Goa was ruled by Portugal for 450 years (1510-1961)! It is India\'s smallest state and has the highest per-capita income!' },
+  karnataka: { name:'Karnataka', emoji:'🐘', capital:'Bengaluru', dance:'Yakshagana (drama+dance), Dollu Kunitha, Veeragaase', art:'Mysore painting (with gold!), Bidri craft, Channapatna toys', festival:'Dasara (12 days of elephant procession in Mysuru!), Ugadi, Rajyotsava', food:'Bisi Bele Bath, Masala Dosa, Mysore Pak, Rava Idli', music:'Carnatic music, Vachana Sahitya (1000-year-old devotional songs)', fact:'India\'s IT capital Bengaluru (Bangalore) is in Karnataka! The Mysure Dasara Festival has been celebrated for 400+ years!' },
+  manipur: { name:'Manipur', emoji:'💎', capital:'Imphal', dance:'Manipuri (one of 8 classical dances of India!), Ras Lila', art:'Kauna weaving (lotus stem fabric!), Handloom, Traditional pottery', festival:'Yaosang (Holi of Manipur), Ningol Chakkouba, Lai Haraoba', food:'Eromba (fermented fish+vegetables), Singju salad, Chamthong', music:'Pena (string instrument), Mridanga, traditional Ras Leela songs', fact:'Polo (the sport) was invented in Manipur! It is still played there. Manipur\'s dances are performed at special celestial alignments!' },
+  bihar: { name:'Bihar', emoji:'🕊️', capital:'Patna', dance:'Jhijhian, Bidesia theater, Jata Jatin (rain dance)', art:'Madhubani painting (UNESCO recognized!), Sujni embroidery', festival:'Chhath Puja (Sun worship, standing in river), Sonepur Mela (Asia\'s largest cattle fair!)', food:'Litti Chokha (roasted wheat balls with spiced brinjal), Sattu, Khaja sweet', music:'Birha, Sohar (birth songs), Chaita (spring songs)', fact:'Bihar is the birthplace of Buddhism! Bodh Gaya (where Buddha got enlightenment) and Nalanda (world\'s first university, 5th century AD) are in Bihar!' }
+};
+
+function showStateDetail(key) {
+  const s = stateData[key];
+  if(!s) return;
+  document.getElementById('stateModalContent').innerHTML = `
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:4rem;margin-bottom:0.5rem;">${s.emoji}</div>
+      <h2 style="font-size:1.6rem;font-weight:900;color:var(--text-dark);margin-bottom:0.3rem;">${s.name}</h2>
+      <span class="badge badge-teal">🏛️ Capital: ${s.capital}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+      <div style="background:rgba(255,107,53,0.05);border-radius:14px;padding:1rem;border:1.5px solid rgba(255,107,53,0.12);">
+        <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.5rem;color:var(--saffron);">💃 Dance Forms</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">${s.dance}</p>
+      </div>
+      <div style="background:rgba(13,148,136,0.05);border-radius:14px;padding:1rem;border:1.5px solid rgba(13,148,136,0.12);">
+        <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.5rem;color:var(--teal);">🎨 Art & Craft</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">${s.art}</p>
+      </div>
+      <div style="background:rgba(245,158,11,0.05);border-radius:14px;padding:1rem;border:1.5px solid rgba(245,158,11,0.12);">
+        <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.5rem;color:#b45309;">🪔 Festivals</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">${s.festival}</p>
+      </div>
+      <div style="background:rgba(236,72,153,0.05);border-radius:14px;padding:1rem;border:1.5px solid rgba(236,72,153,0.12);">
+        <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.5rem;color:var(--pink);">🍛 Famous Food</h4>
+        <p style="font-size:0.85rem;color:var(--text-mid);">${s.food}</p>
+      </div>
+    </div>
+    <div style="background:rgba(139,92,246,0.05);border-radius:14px;padding:1rem;border:1.5px solid rgba(139,92,246,0.12);margin-bottom:1rem;">
+      <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.4rem;color:#6D28D9;">🎵 Music</h4>
+      <p style="font-size:0.85rem;color:var(--text-mid);">${s.music}</p>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(255,107,53,0.08),rgba(245,158,11,0.08));border-radius:14px;padding:1rem;border:2px solid rgba(255,107,53,0.2);">
+      <h4 style="font-weight:800;font-size:0.85rem;margin-bottom:0.4rem;color:var(--saffron-dark);">🌟 Amazing Fact!</h4>
+      <p style="font-size:0.9rem;color:var(--text-dark);font-weight:600;">${s.fact}</p>
+    </div>
+  `;
+  document.getElementById('stateModal').style.display='flex';
+}
+function closeModal() { document.getElementById('stateModal').style.display='none'; }
+document.getElementById('stateModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+// ===== COLORING =====
+const colors=['#FF6B35','#F59E0B','#EC4899','#0D9488','#8B5CF6','#10B981','#3B82F6','#EF4444','#F97316','#84CC16','#06B6D4','#A855F7','#FBBF24','#6EE7B7','#FCA5A5','#white'];
+const stateEmojis=['🦁','🏰','🌴','🌾','🏛️','🦁','🐯','🕌','🦏','🌊','🏔️','🏖️','🐘','💎','🕊️','🌸'];
+let selColor='#FF6B35';
+function initColoring(){
+  const pal=document.getElementById('palette');
+  pal.innerHTML='';
+  colors.forEach((c,i)=>{
+    const d=document.createElement('div');
+    d.className='pal-color'+(i===0?' active':'');
+    d.style.background=c==='white'?'#fff':c;
+    d.style.border=c==='white'?'2px solid #E5E7EB':'3px solid transparent';
+    d.onclick=()=>{ selColor=c; document.querySelectorAll('.pal-color').forEach(p=>p.classList.remove('active')); d.classList.add('active'); };
+    pal.appendChild(d);
+  });
+  const area=document.getElementById('coloringArea');
+  area.innerHTML='';
+  stateEmojis.forEach(em=>{
+    const cell=document.createElement('div');
+    cell.className='color-cell';
+    cell.textContent=em;
+    cell.onclick=()=>{ cell.style.background=selColor; cell.classList.add('colored'); };
+    area.appendChild(cell);
+  });
+}
+function resetColoring(){ initColoring(); }
+
+// ===== SHAPES =====
+const shapeSvgs=[
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="var(--saffron)" opacity="0.8"/></svg>',name:'Circle'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,3 37,37 3,37" fill="var(--teal)" opacity="0.8"/></svg>',name:'Triangle'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><rect x="4" y="4" width="32" height="32" fill="var(--pink)" opacity="0.8"/></svg>',name:'Square'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,2 38,14 32,37 8,37 2,14" fill="var(--gold)" opacity="0.8"/></svg>',name:'Pentagon'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,1 23,13 37,13 26,21 30,35 20,27 10,35 14,21 3,13 17,13" fill="#8B5CF6" opacity="0.8"/></svg>',name:'Star'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><ellipse cx="20" cy="20" rx="18" ry="10" fill="#10B981" opacity="0.8"/></svg>',name:'Oval'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,2 38,20 20,38 2,20" fill="#EF4444" opacity="0.8"/></svg>',name:'Diamond'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><polygon points="20,2 37,14 30,34 10,34 3,14" fill="#F97316" opacity="0.8"/></svg>',name:'House'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><path d="M20 4 Q36 4 36 20 Q36 36 20 36 Q4 36 4 20 Q4 4 20 4Z" fill="#A855F7" opacity="0.8"/></svg>',name:'Petal'},
+  {svg:'<svg width="40" height="40" viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="10" ry="10" fill="#06B6D4" opacity="0.8"/></svg>',name:'R-Rect'},
+];
+let selectedShapes=[];
+function initShapes(){
+  const sc=document.getElementById('shapeCanvas');
+  sc.innerHTML='';
+  shapeSvgs.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='shape-item';
+    div.innerHTML=`<div class="shape-svg">${s.svg}</div><span>${s.name}</span>`;
+    div.onclick=()=>{ div.style.background=div.style.background?'':'rgba(255,107,53,0.08)'; div.style.borderColor=div.style.borderColor&&div.style.borderColor!=='rgb(229, 231, 235)'?'#E5E7EB':'var(--saffron)'; };
+    sc.appendChild(div);
+  });
+}
+function applyPattern(p){
+  const items=document.querySelectorAll('.shape-item');
+  items.forEach((item,i)=>{ item.style.background=''; item.style.borderColor='#E5E7EB'; });
+  const patterns={rangoli:[0,4,6,4,0],warli:[1,1,0,1,1],kolam:[3,2,3,2,3]};
+  (patterns[p]||[]).forEach((si,i)=>{
+    if(items[si+i]) { items[si+i].style.background='rgba(255,107,53,0.12)'; items[si+i].style.borderColor='var(--saffron)'; }
+  });
+  showToast('🎨 '+p.charAt(0).toUpperCase()+p.slice(1)+' pattern applied! Can you see the shapes?','info');
+}
+function resetShapes(){ initShapes(); }
+
+// ===== PUZZLE =====
+const puzzles=[
+  {word:'RAJASTHAN',emoji:'🏰',clue:'Land of Kings — famous for forts and deserts!'},
+  {word:'KERALA',emoji:'🌴',clue:'God\'s Own Country — backwaters and coconuts!'},
+  {word:'GUJARAT',emoji:'🦁',clue:'Land of Garba — famous for Navratri!'},
+  {word:'PUNJAB',emoji:'🌾',clue:'Breadbasket of India — Bhangra and Baisakhi!'},
+  {word:'ASSAM',emoji:'🦏',clue:'Famous for tea and the one-horned rhino!'},
+  {word:'GOA',emoji:'🏖️',clue:'Smallest state — beaches and Carnival!'},
+];
+let pIdx=0, pSelected=[], pBoard=[];
+
+function initPuzzle(idx){
+  idx=idx||0; pIdx=idx;
+  const pw=puzzles[pIdx];
+  document.getElementById('puzzleHint').textContent=pw.emoji;
+  document.getElementById('puzzleClue').textContent=pw.clue;
+  document.getElementById('puzzleResult').textContent='';
+  const letters=pw.word.split('').sort(()=>Math.random()-0.5);
+  pBoard=[...letters,'',''];
+  while(pBoard.length<16) pBoard.push('');
+  renderPuzzle();
+}
+function renderPuzzle(){
+  const grid=document.getElementById('puzzleGrid');
+  grid.innerHTML='';
+  pBoard.forEach((l,i)=>{
+    const tile=document.createElement('div');
+    tile.className='puzzle-tile'+(l===''?' empty':'');
+    tile.textContent=l;
+    if(l) tile.onclick=()=>moveTile(i);
+    grid.appendChild(tile);
+  });
+}
+function moveTile(i){
+  const empty=pBoard.indexOf('');
+  if(Math.abs(empty-i)===1||(Math.abs(empty-i)===4)){
+    [pBoard[i],pBoard[empty]]=[pBoard[empty],pBoard[i]];
+    renderPuzzle();
+    checkPuzzle();
+  }
+}
+function checkPuzzle(){
+  const filled=pBoard.filter(l=>l!=='');
+  const word=filled.join('');
+  if(word===puzzles[pIdx].word){
+    document.getElementById('puzzleResult').textContent='🎉 Correct! '+puzzles[pIdx].word+'!';
+    document.getElementById('puzzleResult').style.color='#059669';
+    showToast('🏆 You solved it! '+puzzles[pIdx].word+'!','success');
+  }
+}
+function shufflePuzzle(){ initPuzzle(pIdx); }
+function nextPuzzle(){ pIdx=(pIdx+1)%puzzles.length; initPuzzle(pIdx); }
+
+// ===== QUIZ =====
+const quizData=[
+  {q:'Which state is called "God\'s Own Country"?',opts:['Gujarat','Kerala','Goa','Rajasthan'],ans:1},
+  {q:'The Golden Temple is in which state?',opts:['Himachal Pradesh','Haryana','Punjab','Uttarakhand'],ans:2},
+  {q:'Which state is famous for the Bhangra dance?',opts:['Bihar','Gujarat','Tamil Nadu','Punjab'],ans:3},
+  {q:'Rasgulla sweet is from which state?',opts:['Maharashtra','West Bengal','Odisha','Assam'],ans:1},
+  {q:'Which state is the birthplace of Mahatma Gandhi?',opts:['Maharashtra','Rajasthan','Gujarat','UP'],ans:2},
+  {q:'Which state has the Taj Mahal?',opts:['Bihar','Uttarakhand','Delhi','Uttar Pradesh'],ans:3},
+];
+let qIndex=0,score=0,answered=false;
+function loadQuestion(){
+  const q=quizData[qIndex];
+  document.getElementById('qProgress').textContent='Q '+(qIndex+1)+' of '+quizData.length;
+  document.getElementById('questionText').textContent=q.q;
+  document.getElementById('quizFeedback').style.display='none';
+  document.getElementById('nextBtn').style.display='none';
+  answered=false;
+  const opts=document.getElementById('quizOptions');
+  opts.innerHTML='';
+  q.opts.forEach((o,i)=>{const btn=document.createElement('button');btn.className='quiz-option';btn.textContent=o;btn.onclick=()=>checkAnswer(i,btn);opts.appendChild(btn);});
+}
+function checkAnswer(i,btn){
+  if(answered)return; answered=true;
+  const q=quizData[qIndex];const fb=document.getElementById('quizFeedback');
+  document.querySelectorAll('.quiz-option').forEach((b,idx)=>{b.disabled=true;if(idx===q.ans)b.classList.add('correct');});
+  if(i===q.ans){score++;document.getElementById('qScore').textContent=score;btn.classList.add('correct');fb.className='quiz-feedback correct';fb.textContent='🗺️ Correct! Great knowledge!';}
+  else{btn.classList.add('wrong');fb.className='quiz-feedback wrong';fb.textContent='❌ Answer: '+q.opts[q.ans];}
+  fb.style.display='block';document.getElementById('nextBtn').style.display='inline-flex';
+}
+function nextQuestion(){
+  qIndex++;
+  if(qIndex>=quizData.length){
+    document.querySelector('.quiz-container').style.display='none';
+    document.getElementById('quizComplete').style.display='block';
+    document.getElementById('finalScoreText').textContent=score+'/'+quizData.length+(score>=4?'🏆 India Explorer!':'💪 Keep learning!');
+    saveModuleProgress('states',score);
+  } else loadQuestion();
+}
+function restartQuiz(){qIndex=0;score=0;document.getElementById('qScore').textContent='0';document.querySelector('.quiz-container').style.display='block';document.getElementById('quizComplete').style.display='none';loadQuestion();}
+
+initPuzzle(0);
+</script>
+</body>
+</html>
