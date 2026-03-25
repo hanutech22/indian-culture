@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teacher Portal 👩‍🏫 | Sanskriti Setu</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="teacher-mode">
+
+<!-- SIDEBAR -->
+<aside class="teacher-sidebar" id="sidebar">
+  <div class="teacher-sidebar-logo">
+    <div>
+      <div class="logo-text">🪔 Sanskriti Setu</div>
+      <div class="logo-sub">Teacher Dashboard</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <a href="#dashboard" class="sidebar-link active" onclick="showSection('dashboard',this)">
+      <span class="icon">📊</span> Dashboard
+    </a>
+    <a href="#lessons" class="sidebar-link" onclick="showSection('lessons',this)">
+      <span class="icon">📋</span> Lesson Plans
+    </a>
+    <a href="#calendar" class="sidebar-link" onclick="showSection('calendar',this)">
+      <span class="icon">📅</span> Cultural Calendar
+    </a>
+    <a href="#progress" class="sidebar-link" onclick="showSection('progress',this)">
+      <span class="icon">📈</span> Student Progress
+    </a>
+    <a href="#activities" class="sidebar-link" onclick="showSection('activities',this)">
+      <span class="icon">🎨</span> Activity Ideas
+    </a>
+    <a href="#worksheets" class="sidebar-link" onclick="showSection('worksheets',this)">
+      <span class="icon">📄</span> Worksheets
+    </a>
+    <a href="index.html" class="sidebar-link" style="margin-top:auto;">
+      <span class="icon">🏠</span> Home
+    </a>
+    <a href="student.html" class="sidebar-link">
+      <span class="icon">🧒</span> Student View
+    </a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="teacher-main">
+
+  <!-- Mobile topbar -->
+  <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;" class="teacher-topbar" id="mobileTopbar">
+    <button onclick="document.getElementById('sidebar').classList.toggle('open')" style="display:none;background:var(--saffron);color:white;border:none;border-radius:8px;padding:0.5rem 0.8rem;font-size:1.2rem;cursor:pointer;" id="menuToggleBtn">☰</button>
+    <div>
+      <h1>Welcome, Teacher! 👩‍🏫</h1>
+      <p>Wednesday, 25th March 2024 • Indian Culture Learning Program</p>
+    </div>
+    <div style="margin-left:auto;display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+      <span class="badge badge-saffron">Nursery–Class 2</span>
+      <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--saffron),var(--gold));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.1rem;">T</div>
+    </div>
+  </div>
+
+  <!-- ===== DASHBOARD SECTION ===== -->
+  <section id="sec-dashboard">
+
+    <!-- Stats -->
+    <div class="stats-grid animate-fadeInUp">
+      <div class="stat-card">
+        <div class="stat-icon">👧</div>
+        <div>
+          <div class="stat-value">42</div>
+          <div class="stat-label">Total Students</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✅</div>
+        <div>
+          <div class="stat-value">8</div>
+          <div class="stat-label">Modules Available</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏅</div>
+        <div>
+          <div class="stat-value">218</div>
+          <div class="stat-label">Badges Awarded</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🪔</div>
+        <div>
+          <div class="stat-value">3</div>
+          <div class="stat-label">Upcoming Festivals</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-grid animate-fadeInUp delay-2">
+
+      <!-- Lesson Plans Snapshot -->
+      <div class="teacher-card">
+        <h3>📋 This Week's Lessons</h3>
+        <div class="lesson-item">
+          <span class="lesson-week">Week 1</span>
+          <div class="lesson-info">
+            <h4>Introduction to Diwali 🪔</h4>
+            <p>Story, craft (clay diya), quiz — All classes</p>
+          </div>
+        </div>
+        <div class="lesson-item">
+          <span class="lesson-week">Week 2</span>
+          <div class="lesson-info">
+            <h4>Panchatantra Stories 📖</h4>
+            <p>"The Lion and the Mouse" — Values: Kindness</p>
+          </div>
+        </div>
+        <div class="lesson-item">
+          <span class="lesson-week">Week 3</span>
+          <div class="lesson-info">
+            <h4>Kids Yoga Day 🧘</h4>
+            <p>Tadasana, Vrikshasana — breathing exercises</p>
+          </div>
+        </div>
+        <div class="lesson-item">
+          <span class="lesson-week">Week 4</span>
+          <div class="lesson-info">
+            <h4>Indian Food Fiesta 🍛</h4>
+            <p>Regional foods map activity, food quiz</p>
+          </div>
+        </div>
+        <a href="#" onclick="showSection('lessons',document.querySelectorAll('.sidebar-link')[1])" class="btn btn-primary btn-sm" style="margin-top:1rem;">View All Lessons</a>
+      </div>
+
+      <!-- Festival Calendar -->
+      <div class="teacher-card" id="calendar">
+        <h3>📅 Upcoming Festivals</h3>
+        <div class="cal-event">
+          <div class="cal-date" style="background:linear-gradient(135deg,var(--saffron),var(--gold));">29<span>Mar</span></div>
+          <div class="cal-event-info">
+            <h4>Holi 🎨</h4>
+            <p>Festival of Colors — Craft: Color mixing, story of Prahlad</p>
+          </div>
+        </div>
+        <div class="cal-event">
+          <div class="cal-date" style="background:linear-gradient(135deg,var(--pink),#be185d);">14<span>Apr</span></div>
+          <div class="cal-event-info">
+            <h4>Baisakhi 🌾</h4>
+            <p>Harvest festival of Punjab — Bhangra dance activity</p>
+          </div>
+        </div>
+        <div class="cal-event">
+          <div class="cal-date" style="background:linear-gradient(135deg,var(--teal),#0284C7);">10<span>May</span></div>
+          <div class="cal-event-info">
+            <h4>Buddha Purnima 🙏</h4>
+            <p>Jataka tales, peace & kindness activities</p>
+          </div>
+        </div>
+        <div class="cal-event">
+          <div class="cal-date" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);">Jul<span>Var</span></div>
+          <div class="cal-event-info">
+            <h4>Eid ul-Adha 🌙</h4>
+            <p>Sharing, kindness, community — multicultural values</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Student Progress Table -->
+    <div class="teacher-card animate-fadeInUp delay-3" style="margin-top:1.5rem;" id="progress">
+      <h3>📈 Class Progress Overview</h3>
+      <div style="overflow-x:auto;">
+        <table class="progress-table">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Class</th>
+              <th>Modules Done</th>
+              <th>Stars Earned</th>
+              <th>Badges</th>
+              <th>Progress</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Aarav Sharma</td><td><span class="badge badge-teal">Class 2</span></td>
+              <td>6 / 8</td><td>⭐ 28</td><td>🏅 Champ, 🎨 Artist</td>
+              <td><div class="progress-bar-wrap" style="min-width:120px;"><div class="progress-bar" style="width:75%"></div></div></td>
+            </tr>
+            <tr>
+              <td>Priya Nair</td><td><span class="badge badge-saffron">Class 1</span></td>
+              <td>5 / 8</td><td>⭐ 22</td><td>🌟 Explorer</td>
+              <td><div class="progress-bar-wrap" style="min-width:120px;"><div class="progress-bar" style="width:63%"></div></div></td>
+            </tr>
+            <tr>
+              <td>Arjun Patel</td><td><span class="badge badge-gold">KG</span></td>
+              <td>4 / 8</td><td>⭐ 16</td><td>🎵 Music Lover</td>
+              <td><div class="progress-bar-wrap" style="min-width:120px;"><div class="progress-bar" style="width:50%"></div></div></td>
+            </tr>
+            <tr>
+              <td>Diya Rao</td><td><span class="badge badge-pink">Nursery</span></td>
+              <td>3 / 8</td><td>⭐ 10</td><td>🌻 Beginner</td>
+              <td><div class="progress-bar-wrap" style="min-width:120px;"><div class="progress-bar" style="width:38%"></div></div></td>
+            </tr>
+            <tr>
+              <td>Karan Singh</td><td><span class="badge badge-teal">Class 2</span></td>
+              <td>8 / 8</td><td>⭐ 40</td><td>🏆 Master, All Badges</td>
+              <td><div class="progress-bar-wrap" style="min-width:120px;"><div class="progress-bar" style="width:100%"></div></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== LESSON PLANS SECTION ===== -->
+  <section id="sec-lessons" class="hidden">
+    <div style="margin-bottom:2rem;">
+      <h2 style="font-size:1.6rem;font-weight:800;color:var(--text-dark);margin-bottom:0.5rem;">📋 Weekly Lesson Plans</h2>
+      <p style="color:var(--text-mid);">Structured cultural activity plans for Nursery – Class 2. Duration: ~30–45 minutes per session.</p>
+    </div>
+
+    <!-- Class tabs -->
+    <div class="class-selector" style="justify-content:flex-start;margin-bottom:2rem;">
+      <button class="class-btn active" onclick="showLessonClass('all',this)">All Classes</button>
+      <button class="class-btn" onclick="showLessonClass('nursery',this)">Nursery</button>
+      <button class="class-btn" onclick="showLessonClass('kg',this)">KG</button>
+      <button class="class-btn" onclick="showLessonClass('class1',this)">Class 1</button>
+      <button class="class-btn" onclick="showLessonClass('class2',this)">Class 2</button>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;" id="lessonsList">
+      <!-- Lesson Cards -->
+      <div class="teacher-card lesson-plan-item" data-class="all" style="border-left:4px solid var(--saffron);">
+        <div class="flex justify-between items-center" style="margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <span class="badge badge-saffron" style="margin-bottom:0.4rem;">Week 1 • Term 1</span>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-dark);">🪔 Diwali — Festival of Lights</h3>
+          </div>
+          <div class="flex gap-1"><span class="badge badge-gold">All Classes</span><span class="badge badge-teal">45 mins</span></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎯 Objectives</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Know why Diwali is celebrated</li><li>✦ Learn story of Ram's return</li><li>✦ Understand light over darkness</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎨 Activities</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Clay diya making craft</li><li>✦ Rangoli pattern drawing</li><li>✦ Diwali story drama play</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">📚 Materials</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Clay / playdough</li><li>✦ Colored chalk / rangoli</li><li>✦ Story flashcards</li></ul></div>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #F3F4F6;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="modules/festivals.html" class="btn btn-primary btn-sm">Open Module 🪔</a>
+          <button onclick="printLesson('Diwali')" class="btn btn-outline btn-sm">🖨️ Print Plan</button>
+        </div>
+      </div>
+
+      <div class="teacher-card lesson-plan-item" data-class="all" style="border-left:4px solid var(--pink);">
+        <div class="flex justify-between items-center" style="margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <span class="badge badge-pink" style="margin-bottom:0.4rem;">Week 2 • Term 1</span>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-dark);">💃 Bharatanatyam & Indian Dance Forms</h3>
+          </div>
+          <div class="flex gap-1"><span class="badge badge-gold">Class 1 & 2</span><span class="badge badge-teal">40 mins</span></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎯 Objectives</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Know 4 classical dances</li><li>✦ Understand Mudras (hand gestures)</li><li>✦ Appreciate regional folk dances</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎨 Activities</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Learn 3 basic mudras</li><li>✦ Draw a dancer coloring page</li><li>✦ Watch/mimic Garba steps</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">📚 Materials</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Dance image flashcards</li><li>✦ Coloring worksheets</li><li>✦ Indian music (audio)</li></ul></div>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #F3F4F6;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="modules/dance-arts.html" class="btn btn-pink btn-sm">Open Module 💃</a>
+          <button onclick="printLesson('Dance')" class="btn btn-outline btn-sm">🖨️ Print Plan</button>
+        </div>
+      </div>
+
+      <div class="teacher-card lesson-plan-item" data-class="all" style="border-left:4px solid var(--gold);">
+        <div class="flex justify-between items-center" style="margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <span class="badge badge-gold" style="margin-bottom:0.4rem;">Week 3 • Term 1</span>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-dark);">📖 Panchatantra: The Lion & the Mouse</h3>
+          </div>
+          <div class="flex gap-1"><span class="badge badge-saffron">All Classes</span><span class="badge badge-teal">35 mins</span></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎯 Objectives</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Understand the moral: Kindness repaid</li><li>✦ Learn about Panchatantra origin</li><li>✦ Practice empathy through storytelling</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎨 Activities</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Story dramatization</li><li>✦ "What would you do?" discussion</li><li>✦ Draw your favourite character</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">📚 Materials</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Story picture cards</li><li>✦ Drawing sheets</li><li>✦ Character puppets (optional)</li></ul></div>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #F3F4F6;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="modules/stories.html" class="btn btn-gold btn-sm">Open Module 📖</a>
+          <button onclick="printLesson('Stories')" class="btn btn-outline btn-sm">🖨️ Print Plan</button>
+        </div>
+      </div>
+
+      <div class="teacher-card lesson-plan-item" data-class="all" style="border-left:4px solid var(--teal);">
+        <div class="flex justify-between items-center" style="margin-bottom:1rem;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <span class="badge badge-teal" style="margin-bottom:0.4rem;">Week 4 • Term 1</span>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-dark);">🧘 Yoga Day for Little Champions</h3>
+          </div>
+          <div class="flex gap-1"><span class="badge badge-saffron">All Classes</span><span class="badge badge-teal">45 mins</span></div>
+        </div>
+        <div class="grid-3" style="gap:1.5rem;">
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎯 Objectives</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Know Yoga's Indian origins</li><li>✦ Learn 4 simple asanas</li><li>✦ Practice deep breathing</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">🎨 Activities</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Tree pose (Vrikshasana)</li><li>✦ Mountain pose (Tadasana)</li><li>✦ Balloon breathing game</li></ul></div>
+          <div><h4 style="font-weight:700;color:var(--text-dark);margin-bottom:0.5rem;">📚 Materials</h4><ul style="color:var(--text-mid);font-size:0.9rem;line-height:1.8;list-style:none;"><li>✦ Yoga mats / clean floor</li><li>✦ Calm background music</li><li>✦ Asana picture cards</li></ul></div>
+        </div>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid #F3F4F6;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="modules/yoga.html" class="btn btn-teal btn-sm">Open Module 🧘</a>
+          <button onclick="printLesson('Yoga')" class="btn btn-outline btn-sm">🖨️ Print Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITIES SECTION ===== -->
+  <section id="sec-activities" class="hidden">
+    <div style="margin-bottom:2rem;">
+      <h2 style="font-size:1.6rem;font-weight:800;color:var(--text-dark);margin-bottom:0.5rem;">🎨 Classroom Activity Ideas</h2>
+      <p style="color:var(--text-mid);">Creative, hands-on activities that bring Indian culture alive in your classroom.</p>
+    </div>
+    <div class="grid-3" style="gap:1.5rem;">
+      <div class="teacher-card" style="border-top:4px solid var(--saffron);">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🪔</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">Clay Diya Making</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Use clay or salt dough to make diyas. Let children decorate with colors. Teach the story of Diwali during the activity.</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-saffron">Craft</span><span class="badge badge-gold">Diwali</span><span class="badge badge-teal">All Ages</span></div>
+      </div>
+      <div class="teacher-card" style="border-top:4px solid var(--pink);">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🎨</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">Rangoli with Chalk</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Use colored chalk on black paper to create Rangoli patterns. Start with dots, then connect. Develops fine motor skills.</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-pink">Art</span><span class="badge badge-gold">Motor Skills</span><span class="badge badge-teal">5+ Years</span></div>
+      </div>
+      <div class="teacher-card" style="border-top:4px solid var(--teal);">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🌱</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">Plant Tulsi Together</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Bring a Tulsi sapling to class. Teach children about this sacred plant's medicinal properties and its role in Indian homes.</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-teal">Nature</span><span class="badge badge-gold">Ayurveda</span></div>
+      </div>
+      <div class="teacher-card" style="border-top:4px solid var(--gold);">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🥁</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">Rhythm Circle</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Clap simple tabla rhythms: "dha dhin dhin dha". Children echo. Develops rhythm, listening skills and music appreciation.</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-saffron">Music</span><span class="badge badge-teal">All Ages</span></div>
+      </div>
+      <div class="teacher-card" style="border-top:4px solid #8B5CF6;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🗺️</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">India's Food Map</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Draw a simple India map. Children place food stickers (idli-South, paratha-North, dhokla-West, macher jhol-East) on regions.</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-gold">Food</span><span class="badge badge-teal">Geography</span><span class="badge badge-pink">6+ Years</span></div>
+      </div>
+      <div class="teacher-card" style="border-top:4px solid #3B82F6;">
+        <div style="font-size:2.5rem;margin-bottom:0.8rem;">🗣️</div>
+        <h3 style="font-size:1rem;font-weight:800;margin-bottom:0.5rem;">Namaste Around India</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.7;">Teach "Hello" in 6 Indian languages: Namaste, Vanakkam, Namaskara, Namaskar, Sat Sri Akal, Adaab. Practice together!</p>
+        <div style="margin-top:0.8rem;display:flex;gap:0.5rem;flex-wrap:wrap;"><span class="badge badge-teal">Languages</span><span class="badge badge-saffron">Culture</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORKSHEETS SECTION ===== -->
+  <section id="sec-worksheets" class="hidden">
+    <div style="margin-bottom:2rem;">
+      <h2 style="font-size:1.6rem;font-weight:800;color:var(--text-dark);margin-bottom:0.5rem;">📄 Printable Worksheets</h2>
+      <p style="color:var(--text-mid);">Download and print these activity sheets for offline classroom use.</p>
+    </div>
+    <div class="grid-3" style="gap:1.5rem;">
+      <div class="teacher-card text-center" style="border:2px dashed rgba(255,107,53,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🪔</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Festival Coloring Sheet</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">Diwali diya and Holi colors — fill the page!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-primary btn-sm w-full">🖨️ Print</button>
+      </div>
+      <div class="teacher-card text-center" style="border:2px dashed rgba(13,148,136,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🧘</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Yoga Asana Cards</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">6 easy yoga poses with names — cut and sort!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-teal btn-sm w-full">🖨️ Print</button>
+      </div>
+      <div class="teacher-card text-center" style="border:2px dashed rgba(245,158,11,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🔤</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Languages Match Sheet</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">Match the script to the language — trace and write!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-gold btn-sm w-full">🖨️ Print</button>
+      </div>
+      <div class="teacher-card text-center" style="border:2px dashed rgba(236,72,153,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🎵</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Instruments Quiz Sheet</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">Identify the instrument from the picture!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-pink btn-sm w-full">🖨️ Print</button>
+      </div>
+      <div class="teacher-card text-center" style="border:2px dashed rgba(139,92,246,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🍛</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Food from My State</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">Draw and name your favorite traditional food!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-sm w-full" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9);color:white;border-radius:50px;font-weight:700;">🖨️ Print</button>
+      </div>
+      <div class="teacher-card text-center" style="border:2px dashed rgba(16,185,129,0.3);">
+        <div style="font-size:3rem;margin-bottom:1rem;">🌿</div>
+        <h3 style="font-weight:800;font-size:1rem;margin-bottom:0.5rem;">Sacred Plants of India</h3>
+        <p style="font-size:0.85rem;color:var(--text-mid);margin-bottom:1rem;">Read, draw, and learn about Tulsi, Neem, Banyan!</p>
+        <button onclick="showToast('📄 Worksheet ready to print!','info')" class="btn btn-sm w-full" style="background:linear-gradient(135deg,#10B981,#059669);color:white;border-radius:50px;font-weight:700;">🖨️ Print</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/app.js"></script>
+<script>
+// Show/hide sidebar sections
+function showSection(id, linkEl) {
+  ['dashboard','lessons','activities','worksheets'].forEach(s => {
+    const el = document.getElementById('sec-' + s);
+    if (el) el.classList.add('hidden');
+  });
+  const target = document.getElementById('sec-' + id);
+  if (target) target.classList.remove('hidden');
+
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  if (linkEl) linkEl.classList.add('active');
+}
+
+function showLessonClass(cls, btn) {
+  document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function printLesson(name) {
+  showToast('🖨️ Printing ' + name + ' lesson plan...', 'info');
+  setTimeout(() => window.print(), 500);
+}
+
+// Mobile menu
+function handleMobileMenu() {
+  const menuBtn = document.getElementById('menuToggleBtn');
+  if (window.innerWidth < 768 && menuBtn) {
+    menuBtn.style.display = 'flex';
+  }
+}
+window.addEventListener('resize', handleMobileMenu);
+handleMobileMenu();
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Sanskriti Setu 🪔 | Student Registration</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .register-wrapper {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FEF9F0, #FFF0E6, #F0FDFA);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 1rem; position: relative; overflow: hidden;
+    }
+    .register-bg { position: absolute; inset: 0; background-image: radial-gradient(circle at 10% 10%, rgba(255,107,53,0.08) 0%, transparent 50%), radial-gradient(circle at 90% 90%, rgba(13,148,136,0.08) 0%, transparent 50%); pointer-events: none; }
+    .register-card { background: white; border-radius: 32px; padding: 3rem; max-width: 560px; width: 100%; box-shadow: 0 24px 80px rgba(0,0,0,0.12); position: relative; z-index: 2; animation: scaleIn 0.5s ease; }
+    .reg-header { text-align: center; margin-bottom: 2rem; }
+    .reg-header .mascot { font-size: 4.5rem; display: block; margin-bottom: 0.5rem; animation: bounce 2s ease-in-out infinite; }
+    .reg-header h1 { font-size: 1.7rem; font-weight: 900; color: var(--text-dark); margin-bottom: 0.3rem; }
+    .reg-header p { color: var(--text-mid); font-size: 0.92rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-label { display: block; font-weight: 700; font-size: 0.88rem; color: var(--text-dark); margin-bottom: 0.35rem; }
+    .form-label span { color: var(--saffron); }
+    .form-input, .form-select { width: 100%; padding: 0.75rem 1.1rem; border: 2.5px solid #E5E7EB; border-radius: 14px; font-size: 0.95rem; font-family: var(--font-kids); color: var(--text-dark); background: #FAFAFA; transition: all 0.3s; outline: none; }
+    .form-input:focus, .form-select:focus { border-color: var(--saffron); background: white; box-shadow: 0 0 0 4px rgba(255,107,53,0.1); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--saffron), var(--gold)); color: white; border: none; border-radius: 50px; font-size: 1.05rem; font-weight: 800; font-family: var(--font-kids); cursor: pointer; margin-top: 0.75rem; transition: all 0.3s; box-shadow: 0 8px 32px rgba(255,107,53,0.35); }
+    .form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,53,0.5); }
+    .step-dots { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
+    .sdot { width: 10px; height: 10px; border-radius: 50%; background: #E5E7EB; transition: all 0.3s; }
+    .sdot.active { background: var(--saffron); width: 26px; border-radius: 5px; }
+    .sdot.done { background: #10B981; }
+    .err { color: #DC2626; font-size: 0.78rem; font-weight: 600; margin-top: 0.25rem; display: none; }
+    .err.show { display: block; }
+    .avatar-btn { font-size: 2.2rem; padding: 0.65rem; border-radius: 14px; border: 3px solid #E5E7EB; background: white; cursor: pointer; transition: all 0.3s; }
+    .avatar-btn.sel { border-color: var(--saffron); background: rgba(255,107,53,0.08); transform: scale(1.15); }
+    .preview-box { background: linear-gradient(135deg,rgba(255,107,53,0.05),rgba(245,158,11,0.05)); border: 2px solid rgba(255,107,53,0.15); border-radius: 14px; padding: 1rem; margin-bottom: 1rem; font-size: 0.87rem; color: var(--text-mid); line-height: 1.8; display: none; }
+    .existing-box { background: rgba(13,148,136,0.05); border: 2px solid rgba(13,148,136,0.15); border-radius: 20px; padding: 1.5rem; text-align: center; }
+    @media (max-width: 480px) { .register-card { padding: 2rem 1.2rem; } .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="register-wrapper">
+  <div class="register-bg"></div>
+  <div class="register-card">
+
+    <!-- Existing Profile -->
+    <div id="existingProfile" style="display:none;">
+      <div class="reg-header">
+        <span class="mascot">🎒</span>
+        <h1 id="wbTitle">Welcome Back!</h1>
+        <p>Ready to continue your cultural adventure?</p>
+      </div>
+      <div class="existing-box">
+        <div style="font-size:3rem;margin-bottom:0.5rem;" id="wbAvatar">🧒</div>
+        <h3 id="wbName" style="font-weight:800;font-size:1.15rem;margin-bottom:0.3rem;"></h3>
+        <p id="wbDetails" style="color:var(--text-mid);font-size:0.85rem;margin-bottom:1.2rem;"></p>
+        <a href="student.html" class="btn btn-primary btn-lg" style="display:inline-flex;margin-bottom:1rem;width:100%;justify-content:center;">🚀 Continue Learning!</a>
+        <button onclick="clearAndRegister()" style="background:none;border:none;color:var(--text-light);font-size:0.82rem;cursor:pointer;font-family:var(--font-kids);">Not you? Register new student →</button>
+      </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registerForm">
+      <div class="reg-header">
+        <span class="mascot">🎒</span>
+        <h1>Let's get started!</h1>
+        <p>Tell us about yourself to begin your 🇮🇳 Indian culture journey!</p>
+      </div>
+      <div class="step-dots">
+        <div class="sdot active" id="sd1"></div>
+        <div class="sdot" id="sd2"></div>
+        <div class="sdot" id="sd3"></div>
+      </div>
+
+      <!-- STEP 1 -->
+      <div id="step1">
+        <div class="form-group">
+          <label class="form-label">Your Full Name <span>*</span></label>
+          <input type="text" class="form-input" id="sName" placeholder="e.g. Aarav Sharma" maxlength="60" />
+          <div class="err" id="nameErr">Please enter your name</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Class <span>*</span></label>
+            <select class="form-select" id="sClass">
+              <option value="">Select</option>
+              <option value="nursery">🌱 Nursery (3–4)</option>
+              <option value="kg">🌻 KG (4–5)</option>
+              <option value="class1">🌼 Class 1 (5–6)</option>
+              <option value="class2">🌺 Class 2 (6–8)</option>
+            </select>
+            <div class="err" id="classErr">Please select your class</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-input" id="sDob" />
+          </div>
+        </div>
+        <button class="form-submit" onclick="goStep(2)">Next → 🌟</button>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">City / Town <span>*</span></label>
+          <input type="text" class="form-input" id="sCity" placeholder="e.g. Pune" />
+          <div class="err" id="cityErr">Please enter your city</div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">District</label>
+            <input type="text" class="form-input" id="sDistrict" placeholder="e.g. Pune District" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">State <span>*</span></label>
+            <select class="form-select" id="sState">
+              <option value="">Select State</option>
+              <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option>
+              <option>Bihar</option><option>Chhattisgarh</option><option>Goa</option>
+              <option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option>
+              <option>Jharkhand</option><option>Karnataka</option><option>Kerala</option>
+              <option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option>
+              <option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option>
+              <option>Odisha</option><option>Punjab</option><option>Rajasthan</option>
+              <option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option>
+              <option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option>
+              <option>West Bengal</option><option>Delhi (NCT)</option>
+              <option>Jammu & Kashmir</option><option>Puducherry</option>
+            </select>
+            <div class="err" id="stateErr">Please select your state</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">School Name</label>
+          <input type="text" class="form-input" id="sSchool" placeholder="e.g. Sunrise Primary School" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Country</label>
+          <select class="form-select" id="sCountry">
+            <option value="India">🇮🇳 India</option>
+            <option>USA</option><option>UK</option><option>Canada</option>
+            <option>Australia</option><option>UAE</option><option>Singapore</option><option>Other</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:1rem;">
+          <button class="btn btn-outline" onclick="goStep(1)" style="border-radius:50px;padding:0.85rem 1.4rem;font-weight:700;white-space:nowrap;">← Back</button>
+          <button class="form-submit" onclick="goStep(3)" style="margin-top:0;">Next → 🌟</button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="step3" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">Pick your Avatar! <span>*</span></label>
+          <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.3rem;">
+            <button class="avatar-btn" onclick="pickAvatar(this,'🧒')">🧒</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'👧')">👧</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'👦')">👦</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'🌟')">🌟</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'🦚')">🦚</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'🪔')">🪔</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'🐯')">🐯</button>
+            <button class="avatar-btn" onclick="pickAvatar(this,'🦋')">🦋</button>
+          </div>
+          <div class="err" id="avatarErr">Please pick an avatar!</div>
+        </div>
+        <div class="preview-box" id="previewBox"></div>
+        <div style="display:flex;gap:1rem;">
+          <button class="btn btn-outline" onclick="goStep(2)" style="border-radius:50px;padding:0.85rem 1.4rem;font-weight:700;white-space:nowrap;">← Back</button>
+          <button class="form-submit" onclick="submitReg()" id="submitBtn" style="margin-top:0;">🚀 Start Learning!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+<script>
+let selAvatar = '';
+function checkExisting() {
+  const p = JSON.parse(localStorage.getItem('studentProfile') || 'null');
+  if (p) {
+    document.getElementById('existingProfile').style.display = 'block';
+    document.getElementById('registerForm').style.display = 'none';
+    document.getElementById('wbTitle').textContent = 'Welcome back, ' + p.name + '!';
+    document.getElementById('wbAvatar').textContent = p.avatar || '🧒';
+    document.getElementById('wbName').textContent = p.name;
+    document.getElementById('wbDetails').textContent = (p.class || '').toUpperCase() + ' • ' + (p.city || '') + ', ' + (p.state || '') + ' • ' + (p.country || 'India');
+  }
+}
+function clearAndRegister() {
+  document.getElementById('existingProfile').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+}
+function goStep(n) {
+  if (n === 2) {
+    const nm = document.getElementById('sName').value.trim();
+    const cl = document.getElementById('sClass').value;
+    if (!nm) { document.getElementById('nameErr').classList.add('show'); return; }
+    document.getElementById('nameErr').classList.remove('show');
+    if (!cl) { document.getElementById('classErr').classList.add('show'); return; }
+    document.getElementById('classErr').classList.remove('show');
+  }
+  if (n === 3) {
+    const cy = document.getElementById('sCity').value.trim();
+    const st = document.getElementById('sState').value;
+    if (!cy) { document.getElementById('cityErr').classList.add('show'); return; }
+    document.getElementById('cityErr').classList.remove('show');
+    if (!st) { document.getElementById('stateErr').classList.add('show'); return; }
+    document.getElementById('stateErr').classList.remove('show');
+    buildPreview();
+  }
+  [1,2,3].forEach(i => {
+    document.getElementById('step'+i).style.display = i===n ? 'block' : 'none';
+    const dot = document.getElementById('sd'+i);
+    dot.className = 'sdot' + (i===n?' active':i<n?' done':'');
+  });
+  if (n===3) buildPreview();
+}
+function pickAvatar(btn, emoji) {
+  document.querySelectorAll('.avatar-btn').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  selAvatar = emoji;
+  document.getElementById('avatarErr').classList.remove('show');
+  buildPreview();
+}
+function buildPreview() {
+  const n = document.getElementById('sName').value;
+  const cl = document.getElementById('sClass').value;
+  const cy = document.getElementById('sCity').value;
+  const st = document.getElementById('sState').value;
+  const sc = document.getElementById('sSchool').value;
+  const labels = {nursery:'🌱 Nursery',kg:'🌻 KG',class1:'🌼 Class 1',class2:'🌺 Class 2'};
+  const pb = document.getElementById('previewBox');
+  pb.style.display='block';
+  pb.innerHTML = `<strong>👤 ${selAvatar||'🧒'} ${n}</strong>&nbsp;&nbsp;<strong>${labels[cl]||cl}</strong><br>📍 ${cy}${cy?', ':''}${st}<br>${sc?'🏫 '+sc+'<br>':''}`;
+}
+function submitReg() {
+  if (!selAvatar) { document.getElementById('avatarErr').classList.add('show'); return; }
+  const profile = {
+    name: document.getElementById('sName').value.trim(),
+    class: document.getElementById('sClass').value,
+    dob: document.getElementById('sDob').value,
+    city: document.getElementById('sCity').value.trim(),
+    district: document.getElementById('sDistrict').value.trim(),
+    state: document.getElementById('sState').value,
+    school: document.getElementById('sSchool').value.trim(),
+    country: document.getElementById('sCountry').value,
+    avatar: selAvatar,
+    regDate: new Date().toISOString()
+  };
+  localStorage.setItem('studentProfile', JSON.stringify(profile));
+  localStorage.setItem('selectedClass', profile.class);
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '🎉 Welcome! Opening portal...';
+  btn.disabled = true;
+  setTimeout(() => { window.location.href = 'student.html'; }, 1000);
+}
+checkExisting();
+</script>
+</body>
+</html>
